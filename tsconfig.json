@@ -1,0 +1,37 @@
+{
+    "compilerOptions": {
+        "sourceMap": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "allowJs": true,
+        "removeComments": false,
+        "noImplicitAny": false,
+        "declaration": false,
+        "moduleResolution": "node",
+        "target": "es5",
+        "typeRoots": [
+            "node_modules/@types/"
+        ],
+        "types": [
+            "node",
+            "jasmine"
+        ],
+        "lib": [
+            "es2017",
+            "dom"
+        ],
+        "rootDir": "src"
+    },
+    "angularCompileOptions": {
+        "preserveWhitespaces": false
+    },
+    "compileOnSave": true,
+    "files": [
+        "src/**/*.ts",
+        "!node_modules/**"
+    ],
+    "exclude": [
+        "node_modules",
+        "build"
+    ]
+}

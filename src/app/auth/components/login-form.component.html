@@ -1,0 +1,20 @@
+<form [formGroup]="loginForm" (ngSubmit)="submit()" novalidate>
+    <div class="form-group">
+        <input type="text" formControlName="username" class="form-control" id="username" placeholder="{{resource.placeholder_username}}"
+            autocomplete="off" spellcheck="off" [ngModel]="auth.username" required="{{resource.placeholder_username}}" inputPattern>
+        <show-errors [control]="loginForm.controls.username"></show-errors>
+    </div>
+
+    <div class="form-group">
+        <input type="password" formControlName="password" class="form-control" id="password" placeholder="{{resource.placeholder_pw}}"
+            autocomplete="off" spellcheck="off" [ngModel]="auth.password" required inputPattern passWordPattern>
+        <show-errors [control]="loginForm.controls.password"></show-errors>
+    </div>
+
+    <div class="checkbox checkbox-primary">
+        <input id="rememberMe" type="checkbox" formControlName="rememberMe" [ngModel]="auth.rememberMe">
+        <label for="rememberMe" class="color--gray">{{resource.label_remember_me}}</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary text-uppercase btn-block login__sign-in" [disabled]="loginForm.invalid">{{resource.label_sign_in}}</button>
+</form>

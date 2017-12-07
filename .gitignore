@@ -1,0 +1,20 @@
+#compiled output
+.tmp/
+test_out/
+dist/
+build/
+deploy/
+
+#dependencies
+node_modules/
+package-lock.json
+
+
+converage/
+
+*.log
+vsc.xml
+src/app/utils/enums/AppSettings.ts
+.env
+
+

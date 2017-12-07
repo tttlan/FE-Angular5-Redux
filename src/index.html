@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+
+<head>
+    <base href="/">
+    <meta charset="utf-8">
+    <title>mCare</title>
+    <meta name="description" content="mCare project">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+    <link rel="stylesheet" href="css/vendor.bundle.css">
+    <link rel="stylesheet" href="css/app.bundle.css">
+
+    <script src="js/vendor.bundle.js"></script>
+
+    <!-- 1. Load libraries -->
+    <!-- Polyfill(s) for older browsers -->
+    <script src="libs/shim.min.js"></script>
+    <script src="libs/zone.js"></script>
+    <script src="libs/Reflect.js"></script>
+    <script src="libs/system.src.js"></script>
+    <script src="libs/respond.js"></script>
+    <script src="libs/xdomain.js"></script>
+
+    <!-- 2. Configure SystemJS -->
+    <script src="libs/systemjs.conf.js"></script>
+    <script>
+        System.import('app').catch(function (err) {
+            console.error(err);
+        });
+    </script>
+</head>
+
+<body>
+    <app>
+        <div id="loading-wrapper" class="loading-wrapper">
+            <div id="loading-text" class="loading-text">LOADING</div>
+            <div id="loading-content" class="loading-content"></div>
+        </div>
+    </app>
+</body>
+
+</html>

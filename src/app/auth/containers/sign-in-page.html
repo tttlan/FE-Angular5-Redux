@@ -1,0 +1,26 @@
+<div class="login">
+    <div class="text-center login-header">
+        <img src="{{resource.login_header_logo}}" class="login-header__logo" />
+        <h4 class="text-bold color--black">{{resource.login_title}}</h4>
+    </div>
+    
+    <div class="alert alert-danger" role="alert" *ngIf="error$ | async">
+        {{error$ | async}}
+    </div>
+
+    <login-form 
+        [resource]="resource" 
+        [auth]="auth"
+        [loading]="loading$ | async"
+        (submitted)="onSubmit($event)">
+    </login-form>
+
+    <hr class="login__break">
+
+    <div class="login__forgot-link text-center">
+        <a href="javascript: void(0)" class="color--gray">{{resource.label_forgot_pw}}</a>
+    </div>
+    <div class="login-footer text-center">
+        <img src="{{resource.login_footer_logo}}" class="login-footer__logo" />
+    </div>
+</div>
