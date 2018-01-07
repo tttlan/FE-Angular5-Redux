@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { NotFoundPageComponent } from './core/containers/not-found-page';
+import { NotFoundPageComponent } from './containers/not-found-page/not-found-page';
 
 const routes: Routes = [
     {
@@ -15,7 +15,7 @@ const routes: Routes = [
     },
     {
         path: 'auth',
-        loadChildren: 'app/auth/auth.module#AuthModule'
+        loadChildren: 'app/modules/auth.module#AuthModule'
     },
     {
         path: '**',

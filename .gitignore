@@ -14,7 +14,7 @@ converage/
 
 *.log
 vsc.xml
-src/app/utils/enums/AppSettings.ts
+src/app/shared/enums/AppSettings.ts
 .env
 
 

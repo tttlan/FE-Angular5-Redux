@@ -11,7 +11,7 @@ exports.paths = {
     tmp: '.tmp',
     deploy: 'deploy',
     release: 'release',
-    environmentFile: '/app/utils/enums/',
+    environmentFile: '/app/shared/enums/',
 
     mainScss: '/assets/styles/styles.scss',
     appScssFile: '/assets/styles/**/*.scss',

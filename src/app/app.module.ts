@@ -12,19 +12,21 @@ import {
 } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { reducers, metaReducers } from './core/reducers/core.reducer';
+import { reducers, metaReducers } from './reducers/core.reducer';
 import { CustomRouterStateSerializer } from './utils/utils';
 
 // import settings
-import { AppSettings } from './utils/enums/AppSettings';
+import { AppSettings } from './shared/enums/AppSettings';
 
 // import new module
 import { AppRoutingModule } from './app-routing.module';
-import { CoreModule } from './core/core.module';
-import { AuthModule } from './auth/auth.module';
+import { 
+    CoreModule,
+    AuthModule 
+} from './modules/index';
 
 // import app component
-import { AppPageComponent } from './core/containers/app-page';
+import { AppPageComponent } from './containers/app-page/app-page';
 
 @NgModule({
     declarations: [
