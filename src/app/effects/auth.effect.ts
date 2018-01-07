@@ -35,17 +35,17 @@ export class AuthEffects {
             .catch(error => of(new fromAuthActions.SignInErrorAction(error)))
         );
 
-    // @Effect({dispatch: false})
-    // signInSuccess$ = this.actions$
-    //     .ofType(AuthActionTypes.SIGN_IN_SUCCESS)
-    //     .do(() => this.router.navigate(['/404'])); // TODO
+    @Effect({dispatch: false})
+    signInSuccess$ = this.actions$
+        .ofType(AuthActionTypes.SIGN_IN_SUCCESS)
+        .do(() => this.router.navigate(['/home']));
 
-    // @Effect({dispatch: false})
-    // signInRedirect$ = this.actions$
-    //     .ofType(AuthActionTypes.SIGN_IN_REDIRECT)
-    //     .do(authed => {
-    //         this.router.navigate(['/users/sign-in']);
-    //     });
+    @Effect({dispatch: false})
+    signInRedirect$ = this.actions$
+        .ofType(AuthActionTypes.SIGN_IN_REDIRECT)
+        .do(authed => {
+            this.router.navigate(['/auth/sign-in']);
+        });
 
     /**
      * @constructor

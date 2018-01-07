@@ -22,7 +22,8 @@ import { AppSettings } from './shared/enums/AppSettings';
 import { AppRoutingModule } from './app-routing.module';
 import { 
     CoreModule,
-    AuthModule 
+    AuthModule,
+    HomeModule 
 } from './modules/index';
 
 // import app component
@@ -45,7 +46,8 @@ import { AppPageComponent } from './containers/app-page/app-page';
 
         AppRoutingModule,
         CoreModule.forRoot(),
-        AuthModule.forRoot()
+        AuthModule.forRoot(),
+        HomeModule.forRoot()
     ],
     providers: [
         {
