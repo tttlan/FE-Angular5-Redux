@@ -5,7 +5,7 @@ import { HomeComponent } from '../containers/home/home-page';
 
 const routes: Routes = [
     {
-        path: 'home',
+        path: 'dashboard',
         component: HomeComponent
     },
     {

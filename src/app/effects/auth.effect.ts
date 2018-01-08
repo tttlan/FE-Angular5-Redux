@@ -38,7 +38,7 @@ export class AuthEffects {
     @Effect({dispatch: false})
     signInSuccess$ = this.actions$
         .ofType(AuthActionTypes.SIGN_IN_SUCCESS)
-        .do(() => this.router.navigate(['/home']));
+        .do(() => this.router.navigate(['/home/dashboard']));
 
     @Effect({dispatch: false})
     signInRedirect$ = this.actions$

@@ -21,7 +21,7 @@ const routes: Routes = [
     {
         path: 'home',
         loadChildren: 'app/modules/home.module#HomeModule',
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
     },
     {
         path: '**',
