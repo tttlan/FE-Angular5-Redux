@@ -112,6 +112,14 @@
 
     $ npm-install-missing
 
+# Remove node_modules or some package-name
+
+1. Need install rimraf
+
+    $ npm i -g rimraf
+
+    $ rimraf node_modules or rimraf {file-name}
+
 
 
 
