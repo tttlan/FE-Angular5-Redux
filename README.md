@@ -36,7 +36,7 @@
 
     https://www.npmjs.com/
 
-5. Angular 4
+5. Angular 5
 
     https://angular.io/
 
@@ -46,7 +46,17 @@
 
     https://getbootstrap.com/docs/4.0/getting-started/introduction/
 
-7. @ngrx/*
+7. @ngrx
+
+    $ [@ngrx/store] (./docs/store/README.md)
+
+    $ [@ngrx/effects] (./docs/effects/README.md)
+
+    $ [@ngrx/router-store] (./docs/router-store/README.md)
+
+    $ [@ngrx/store-devtools] (./docs/store-devtools/README.md)
+
+8. Flux (Redux)
 
 ## Style Guide
 
