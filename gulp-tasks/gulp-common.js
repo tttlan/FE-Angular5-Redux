@@ -251,11 +251,11 @@ module.exports = () => {
         bundleJsTask: () => {
             return gulp.src([
                 conf.configs.jquery,
-                conf.paths.src + conf.paths.assetJsFile,
                 conf.configs.bootstrapJs,
                 conf.configs.moment,
                 conf.configs.momentTimeZone,
-                conf.configs.cryptoJs
+                conf.configs.cryptoJs,
+                conf.paths.src + conf.paths.assetJsFile,
             ])
                 .pipe(eslint({
                     quiet: true
@@ -324,7 +324,7 @@ module.exports = () => {
                 runSequence('copy-fonts');
             });
 
-            gulp.watch(conf.paths.src + conf.paths.assetCssAllFile, {
+            gulp.watch(conf.paths.src + conf.paths.assetCssFile, {
                 interval: OPTIONS.watchInterval
             }, () => {
                 runSequence('vendor-css');
