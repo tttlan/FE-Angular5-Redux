@@ -73,10 +73,10 @@ module.exports = () => {
 
     var vendorCSS = () => {
         return gulp.src([
-            conf.paths.src + conf.paths.assetCssFile,
-            conf.configs.bootstrapCSS,
-            conf.configs.materialTheme
-        ])
+                conf.configs.bootstrapCSS,
+                conf.configs.materialTheme,
+                conf.paths.src + conf.paths.assetCssAllFile,
+            ])
             .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.init()))
             .pipe(plugins.concat('vendor.bundle.css'))
             .pipe(cleanCSS())

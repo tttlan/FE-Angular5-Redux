@@ -22,7 +22,7 @@ exports.paths = {
     appIndexFile: '/index.html',
 
     assetCssFile: '/assets/css/*.css',
-    assetCssAllFile: '/assets/css/**',
+    assetCssAllFile: '/assets/css/**/*.css',
     assetImageFile: '/assets/images/**/*',
     assetImageAllFile: '/assets/images/**',
     assetFontsFile: '/assets/fonts/**/*',
