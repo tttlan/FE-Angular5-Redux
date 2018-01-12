@@ -106,3 +106,18 @@ exports.configs = {
     cryptoJs: './node_modules/crypto-js/crypto-js.js',
     deepFreezeStrict: './node_modules/deep-freeze-strict/**/*.js'
 };
+
+exports.bundleJs = [
+    this.configs.jquery,
+    this.configs.bootstrapJs,
+    this.configs.moment,
+    this.configs.momentTimeZone,
+    this.configs.cryptoJs,
+    this.paths.src + this.paths.assetJsFile
+];
+
+exports.vendorCss = [
+    this.configs.bootstrapCSS,
+    this.configs.materialTheme,
+    this.paths.src + this.paths.assetCssAllFile
+];

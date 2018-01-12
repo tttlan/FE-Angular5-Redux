@@ -72,11 +72,7 @@ module.exports = () => {
     };
 
     var vendorCSS = () => {
-        return gulp.src([
-                conf.configs.bootstrapCSS,
-                conf.configs.materialTheme,
-                conf.paths.src + conf.paths.assetCssAllFile,
-            ])
+        return gulp.src(conf.vendorCss)
             .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.init()))
             .pipe(plugins.concat('vendor.bundle.css'))
             .pipe(cleanCSS())
@@ -129,10 +125,10 @@ module.exports = () => {
             return gulp.src([
                 conf.paths.src + '**/*.ts'
             ])
-                .pipe(eslint({
-                    fix: true
-                }))
-                .pipe(eslint.format())
+                // .pipe(eslint({
+                //     fix: true
+                // }))
+                // .pipe(eslint.format())
                 .pipe(gulp.dest(conf.paths.src + '/'));
         },
         lintWatchTask: () => {
@@ -249,17 +245,10 @@ module.exports = () => {
                 .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + '@ngrx/'));
         },
         bundleJsTask: () => {
-            return gulp.src([
-                conf.configs.jquery,
-                conf.configs.bootstrapJs,
-                conf.configs.moment,
-                conf.configs.momentTimeZone,
-                conf.configs.cryptoJs,
-                conf.paths.src + conf.paths.assetJsFile,
-            ])
-                .pipe(eslint({
-                    quiet: true
-                }))
+            return gulp.src(conf.bundleJs)
+                // .pipe(eslint({
+                //     quiet: true
+                // }))
                 .pipe(plugins.sourcemaps.init())
                 .pipe(gp_concat('vendor.bundle.js'))
                 .pipe(uglify())
