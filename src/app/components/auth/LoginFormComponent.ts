@@ -5,7 +5,7 @@ import { Auth } from '../../models/auth';
 @Component({
     moduleId: module.id,
     selector: 'login-form',
-    templateUrl: './login-form.component.html'
+    templateUrl: './LoginFormView.html'
 })
 
 export class LoginFormComponent implements OnInit {

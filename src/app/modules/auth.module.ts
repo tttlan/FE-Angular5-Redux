@@ -11,7 +11,7 @@ import { AuthEffects } from '../effects/auth.effect';
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { SignInComponent } from '../containers/auth/sign-in-page';
-import { LoginFormComponent } from '../components/auth/login-form.component';
+import { LoginFormComponent } from '../components/auth/LoginFormComponent';
 
 const COMPONENTS = [
     SignInComponent,
