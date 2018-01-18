@@ -10,7 +10,7 @@ import 'rxjs/add/operator/exhaustMap';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/take';
 
-import { User } from '../models/users';
+import { User } from '../models/user.model';
 import { AuthService } from '../services/auth.service';
 import { AuthActionTypes } from '../shared/constants/AuthActionTypes';
 import * as fromAuthActions from '../actions/auth.action';

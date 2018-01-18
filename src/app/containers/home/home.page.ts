@@ -4,7 +4,7 @@ import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/
     moduleId: module.id,
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'home',
-    templateUrl: './home-page.html'
+    templateUrl: './home.page.html'
 })
 
 export class HomeComponent implements OnInit {

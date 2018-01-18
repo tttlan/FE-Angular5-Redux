@@ -8,8 +8,8 @@ import { Actions } from '../../actions/auth.action';
 import { AuthActionTypes } from '../../shared/constants/AuthActionTypes';
 
 // import models
-import { Auth, State, initialState } from '../../models/auth';
-import { User } from '../../models/users';
+import { Auth, State, initialState } from '../../models/auth.model';
+import { User } from '../../models/user.model';
 
 
 export interface AuthState {

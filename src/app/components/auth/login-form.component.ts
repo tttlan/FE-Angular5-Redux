@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import * as fromAngularForms from '@angular/forms';
-import { Auth } from '../../models/auth';
+import { Auth } from '../../models/auth.model';
 
 @Component({
     moduleId: module.id,
     selector: 'login-form',
-    templateUrl: './LoginFormView.html'
+    templateUrl: './login-form.component.html'
 })
 
 export class LoginFormComponent implements OnInit {

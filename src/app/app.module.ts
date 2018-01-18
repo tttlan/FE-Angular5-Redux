@@ -27,7 +27,7 @@ import {
 } from './modules/index';
 
 // import app component
-import { AppPageComponent } from './containers/app-page/app-page';
+import { AppPageComponent } from './containers/app/app.page';
 
 @NgModule({
     declarations: [

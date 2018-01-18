@@ -10,8 +10,8 @@ import { reducers } from '../reducers/auth/index';
 import { AuthEffects } from '../effects/auth.effect';
 
 import { AuthRoutingModule } from './auth-routing.module';
-import { SignInComponent } from '../containers/auth/sign-in-page';
-import { LoginFormComponent } from '../components/auth/LoginFormComponent';
+import { SignInComponent } from '../containers/auth/sign-in.page';
+import { LoginFormComponent } from '../components/auth/login-form.component';
 
 const COMPONENTS = [
     SignInComponent,

@@ -4,11 +4,11 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 // import core containers
-import { NotFoundPageComponent } from '../containers/not-found-page/not-found-page';
+import { NotFoundPageComponent } from '../containers/not-found/not-found.page';
 
 // import core components
-import { ShowErrorsComponent } from '../components/show-errors';
-import { LayoutComponent } from '../components/layout';
+import { ShowErrorsComponent } from '../components/show-errors.component';
+import { LayoutComponent } from '../components/layout.component';
 
 // import core directives
 import { InputPatternValidatorDirective } from '../shared/directives/input-pattern-validator.directive';

@@ -6,7 +6,7 @@ import * as fromAngularForms from '@angular/forms';
 import { HomeRoutingModule } from './home-routing.module';
 import { AuthService } from '../services/auth.service';
 
-import { HomeComponent } from '../containers/home/home-page';
+import { HomeComponent } from '../containers/home/home.page';
 
 const COMPONENTS = [
     HomeComponent

@@ -2,8 +2,8 @@
 import { Action } from '@ngrx/store';
 
 // import models
-import { Auth } from '../models/auth';
-import { User } from '../models/users';
+import { Auth } from '../models/auth.model';
+import { User } from '../models/user.model';
 
 // import auth action type
 import { AuthActionTypes } from '../shared/constants/AuthActionTypes';
