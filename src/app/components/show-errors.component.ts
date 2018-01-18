@@ -2,9 +2,9 @@ import { Component, Input } from '@angular/core';
 import { AbstractControlDirective, AbstractControl } from '@angular/forms';
 
 import { MessageErrorResource } from '../shared/resources/msg-error.resource';
-import { UIUtils } from '../utils/UIUtils';
+import { StringUtils } from '../utils/StringUtils';
 
-const uiUtil = new UIUtils();
+const stringUtils = new StringUtils();
 
 @Component({
     moduleId: module.id,
@@ -18,9 +18,9 @@ const uiUtil = new UIUtils();
 export class ShowErrorsComponent {
     private static readonly errorMessage = {
         required: () => MessageErrorResource.msg_requried,
-        minLength: (params) => uiUtil.formatString(MessageErrorResource.msg_min_length, params.requiredLength),
-        maxLength: (params) => uiUtil.formatString(MessageErrorResource.msg_max_length, params.requiredLength),
-        pattern: (params) => uiUtil.formatString(MessageErrorResource.msg_pattern, params.requiredPattern),
+        minLength: (params) => stringUtils.formatString(MessageErrorResource.msg_min_length, params.requiredLength),
+        maxLength: (params) => stringUtils.formatString(MessageErrorResource.msg_max_length, params.requiredLength),
+        pattern: (params) => stringUtils.formatString(MessageErrorResource.msg_pattern, params.requiredPattern),
         password: (params) => params.message,
         inputPattern: (params) => params.message
     };

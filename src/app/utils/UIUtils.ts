@@ -1,5 +1,5 @@
 /**
- * Modify Util for validators
+ * Modify Utils
  */
 import * as _ from 'lodash';
 
@@ -12,12 +12,11 @@ export class UIUtils {
         return _.isEmpty(value) || value === '';
     }
 
-    formatString(msg: string, ...characters: any[]): string {
-        for (let i = 0; i < characters.length; i++) {
-            let regexp = new RegExp('\\{' + i + '\\}', 'gi');
-            msg = msg.replace(regexp, characters[i]);
+    isNumber(a: any): boolean {
+        if (a === null || a.length === 0) {
+            return false;
+        } else {
+            return (!isNaN(a));
         }
-
-        return msg;
     }
 }

@@ -1,4 +1,4 @@
-import { UIUtils } from './ui-utils';
+import { UIUtils } from './UIUtils';
 
 export class CustomValidators {
     isValidPassword(password: string): boolean {

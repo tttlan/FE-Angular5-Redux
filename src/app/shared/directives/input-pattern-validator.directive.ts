@@ -1,7 +1,7 @@
 import { Directive } from '@angular/core';
 import { NG_VALIDATORS, FormControl, Validator, ValidationErrors } from '@angular/forms';
 
-import { CustomValidators } from '../../utils/Validations';
+import { CustomValidators } from '../../utils/Validators';
 import { UIUtils } from '../../utils/UIUtils';
 
 @Directive({

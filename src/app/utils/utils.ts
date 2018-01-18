@@ -2,9 +2,6 @@ import { RouterStateSerializer } from '@ngrx/router-store';
 import { RouterStateSnapshot, Params } from '@angular/router';
 import { BaseRequestOptions } from '@angular/http';
 
-// import { GlobalApp } from './session-storage';
-// import { UIUtils } from './ui-utils';
-
 /**
  * This function coerces a string into a string literal type.
  * Using tagged union types in TypeScript 2.x, this enables powerful 

@@ -1,4 +1,4 @@
-import { UIUtils } from './ui-utils';
+import { UIUtils } from './UIUtils';
 import * as CryptoJS from 'crypto-js';
 
 export class GlobalApp {
@@ -8,7 +8,7 @@ export class GlobalApp {
     private _globalInfo: string = null;
     private _uiutils = new UIUtils();
 
-    encryptValue(value: string) {
+    encryptValue(value: string): string {
         if (!this._uiutils.isNullOrUndefined(value)) {
             try {
                 return CryptoJS.AES.encrypt(JSON.stringify(value), this._secretKey);
