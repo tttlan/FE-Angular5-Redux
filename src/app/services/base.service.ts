@@ -1,9 +1,9 @@
-import {Injectable} from "@angular/core";
-import {HTTP_VERBS} from "../shared/enums/Enum";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { HTTP_VERBS } from "../shared/enums/Enum";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import * as _ from "lodash";
-import {NavigationStart, Router} from "@angular/router";
-import {Subject} from "rxjs/Subject";
+import { NavigationStart, Router } from "@angular/router";
+import { Subject } from "rxjs/Subject";
 
 @Injectable()
 export class BaseService {
@@ -16,9 +16,9 @@ export class BaseService {
     constructor(private http: HttpClient, private router: Router) {
         this.baseUrl = "http://localhost:5000";
         router.events.subscribe(event => {
-           if (event instanceof NavigationStart) {
-               this.subject.next({type: null, text: null});
-           }
+            if (event instanceof NavigationStart) {
+                this.subject.next({ type: null, text: null });
+            }
         });
 
     }
@@ -29,7 +29,7 @@ export class BaseService {
      * @param response
      */
     setMessage(response: any) {
-        this.subject.next({type: response.type, text: response.message});
+        this.subject.next({ type: response.type, text: response.message });
     }
 
     get(url: any, options: any = {}) {
@@ -123,7 +123,7 @@ export class BaseService {
     }
 
     getRequesOption() {
-        let headers = new HttpHeaders({"Conten-Type": "application/json"});
+        let headers = new HttpHeaders({ "Conten-Type": "application/json" });
         return headers;
 
     }
