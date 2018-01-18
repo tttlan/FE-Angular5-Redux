@@ -1,5 +1,5 @@
 // import ui util
-import { UIUtils } from '../../utils/ui-utils';
+import { UIUtils } from '../../utils/UIUtils';
 
 // import auth actions
 import { Actions } from '../../actions/auth.action';

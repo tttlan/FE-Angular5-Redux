@@ -13,7 +13,7 @@ import {
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { reducers, metaReducers } from './reducers/core.reducer';
-import { CustomRouterStateSerializer } from './utils/utils';
+import { CustomRouterStateSerializer } from './utils/Utils';
 
 // import settings
 import { AppSettings } from './shared/enums/AppSettings';

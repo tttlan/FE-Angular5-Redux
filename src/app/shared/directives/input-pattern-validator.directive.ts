@@ -1,8 +1,8 @@
 import { Directive } from '@angular/core';
 import { NG_VALIDATORS, FormControl, Validator, ValidationErrors } from '@angular/forms';
 
-import { CustomValidators } from '../../utils/custom-validators';
-import { UIUtils } from '../../utils/ui-utils';
+import { CustomValidators } from '../../utils/Validations';
+import { UIUtils } from '../../utils/UIUtils';
 
 @Directive({
     selector: '[inputPattern]',

@@ -6,7 +6,7 @@ import {
     createSelector
 } from '@ngrx/store';
 import { AppSettings } from '../shared/enums/AppSettings';
-import { RouterStateUrl } from '../utils/utils';
+import { RouterStateUrl } from '../utils/Utils';
 import * as fromRouter from '@ngrx/router-store';
 import { storeFreeze } from 'ngrx-store-freeze';
 

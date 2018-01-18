@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { AbstractControlDirective, AbstractControl } from '@angular/forms';
 
 import { MessageErrorResource } from '../shared/resources/msg-error.resource';
-import { UIUtils } from '../utils/ui-utils';
+import { UIUtils } from '../utils/UIUtils';
 
 const uiUtil = new UIUtils();
 
