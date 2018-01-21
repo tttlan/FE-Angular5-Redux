@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
 import { Auth, initialAuth, State } from '../../models/auth.model';
-import { LoginPageResource } from '../../shared/resources/auth.resource';
+import RS from '../../shared/resources/resource-manager';
 import * as fromAuthActions from '../../actions/auth.action';
 import * as fromAuthReducers from '../../reducers/auth/index';
 
@@ -23,7 +23,7 @@ export class SignInComponent implements OnInit {
     constructor(private store: Store<State>) { }
 
     ngOnInit() {
-        this.resource = LoginPageResource;
+        this.resource = RS;
         this.auth = initialAuth;
         this.error$ = this.store.select(fromAuthReducers.getSignInError);
         this.loading$ = this.store.select(fromAuthReducers.getSignInLoading);

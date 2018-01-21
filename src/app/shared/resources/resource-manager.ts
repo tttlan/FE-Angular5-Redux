@@ -35,7 +35,8 @@ let ResourceManager = {
         return DefaultResources;
     },
     getString: (key, param = null, option = null) => {
-        let Resources = this.curResource;
+        console.log(this);
+        let Resources = this.default.curResource;
 
         if (typeof Resources !== "undefined") {
             let str = Resources[key];

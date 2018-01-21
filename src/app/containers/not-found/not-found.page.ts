@@ -1,29 +1,18 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
-import { NotFoundPageResource } from '../../shared/resources/not-found-page.resource';
+import RS from '../../shared/resources/resource-manager';
 
 @Component({
     moduleId: module.id,
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'not-found-page',
-    template: `
-        <div class="not-found-page text-center">
-            <mat-card class="not-found-page__card">
-                <mat-card-content>
-                    <img height="400" mat-card-mat-image src="{{resource.card_img}}" alt="{{resource.card_img_alt}}">
-                </mat-card-content>
-                <mat-card-footer>
-                    <mat-card-actions>
-                        <button mat-raised-button color="accent" routerLink="/">{{resource.card_action}}</button>
-                    </mat-card-actions>
-                </mat-card-footer>
-            </mat-card>
-        </div>
-    `
+    templateUrl: './not-found.page.html'
 })
 
-export class NotFoundPageComponent {
-    public resource = NotFoundPageResource;
+export class NotFoundPageComponent implements OnInit{
+    resource: any;
 
-    
+    ngOnInit() {
+        this.resource = RS;
+    }
 }
