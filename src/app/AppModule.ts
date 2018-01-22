@@ -30,6 +30,7 @@ import { AppPageComponent } from './containers/app/app.page';
 import {TokenInterceptor} from "./TokenInterceptor";
 import {BaseService} from "./services/BaseService";
 import {ApiHelpers} from "./utils/ApiHelpers";
+import {UserStore} from "./store/UserStore";
 
 @NgModule({
     declarations: [
@@ -62,7 +63,8 @@ import {ApiHelpers} from "./utils/ApiHelpers";
             multi: true
         },
         BaseService,
-        ApiHelpers
+        ApiHelpers,
+        UserStore
     ],
     bootstrap: [AppPageComponent]
 })

@@ -9,7 +9,7 @@ import RS from '../../shared/resources/resource-manager';
     templateUrl: './not-found.page.html'
 })
 
-export class NotFoundPageComponent implements OnInit{
+export class NotFoundPageComponent implements OnInit {
     resource: any;
 
     ngOnInit() {
