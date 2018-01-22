@@ -1,7 +1,7 @@
 import { Directive } from '@angular/core';
 import { NG_VALIDATORS, FormControl, Validator, ValidationErrors } from '@angular/forms';
 
-import { MessageErrorResource } from '../../shared/resources/msg-error.resource';
+import RS from '../../shared/resources/resource-manager';
 import { CustomValidators } from '../../utils/Validators';
 import { UIUtils } from '../../utils/UIUtils';
 
@@ -31,7 +31,7 @@ export class PassWordPatternValidatorDirective implements Validator {
 
             const message = {
                 password: {
-                    message: MessageErrorResource.msg_password_pattern
+                    message: RS.getString('MSG_ERROR_PATTERN_PASSWORD')
                 }
             };
 

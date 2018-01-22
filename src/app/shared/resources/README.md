@@ -1,48 +1,58 @@
 ## RESOURCE NAME RULES
 
-# Messages for apply global
+# Should be uppercase
+
+# Messages
     
-1. msg_info_{message name}
+1. MSG_INFO_{message name}
 
-2. msg_warning_{message name}
+2. MSG_WARNING_{message name}
 
-3. msg_success_{message name}
+3. MSG_SUCCESS_{message name}
 
-4. msg_danger_{message name}
+4. MSG_DANGER_{message name}
 
-5. msg_error_{message name}
+5. MSG_ERROR_{message name}
 
 # Status
 
-1. status_{status name}
+1. STATUS_{status name}
 
-    $ status_done: 'Done'
-    $ status_pending: 'Pending'
+    $ STASTUS_DONE: 'Done'
+
+    $ STATUS_PENDING: 'Pending'
 
 # Button
 
-1. btn_{button name}
+1. BTN_{button name}
 
-    $ btn_add: 'Add'
-    $ btn_add_user: 'Add User'
+    $ BTN_ADD: 'Add'
+
+    $ BTN_ADD_USER: 'Add User'
 
 # Feature
 
 1. {feature name}_{property name}
 
-    $ user_userName: 'User Name'
-    $ user_firstName
-    $ user_lastName
+    $ USER_USERNAME: 'User Name'
 
-    $ product_productName
-    $ product_price
+    $ USER_FIRSTNAME
 
-2. msg_{type}_{feature name}_{message name}
+    $ USER_LASTNAME
 
-    $ msg_info_user_register_account: 'content'
-    $ msg_warning_user_delete: 'content'
-    $ msg_success_user_create: 'content'
-    $ msg_error_user_create: 'content'
+    $ PRODUCT_NAME
+
+    $ PRODUCT_PRICE
+
+2. MSG_{type}_{feature name}_{message name}
+
+    $ MSG_INFO_USER_PROFILE: 'content'
+
+    $ MSG_WARNING_USER_DELETE: 'content'
+
+    $ MSG_SUCCESS_USER_CREATE: 'content'
+
+    $ MSG_ERROR_USER_CREATE: 'content'
 
 
 
