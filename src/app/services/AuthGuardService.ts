@@ -7,7 +7,7 @@ import * as Auth from '../actions/auth.action';
 import * as fromAuth from '../reducers/auth/index';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class AuthGuardService implements CanActivate {
   constructor(private store: Store<fromAuth.State>) { }
 
   canActivate(): Observable<boolean> {

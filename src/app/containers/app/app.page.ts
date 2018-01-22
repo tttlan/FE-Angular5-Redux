@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import {Component, ChangeDetectionStrategy, OnInit} from '@angular/core';
 
 @Component({
     moduleId: module.id,
@@ -11,4 +11,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     `
 })
 
-export class AppPageComponent { }
+export class AppPageComponent   {
+
+
+
+
+
+}

@@ -5,13 +5,13 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 import { CoreModule } from './core.module';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../services/AuthService';
 import { reducers } from '../reducers/auth/index';
 import { AuthEffects } from '../effects/auth.effect';
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { SignInComponent } from '../containers/auth/sign-in.page';
-import { LoginFormComponent } from '../components/auth/login-form.component';
+import { LoginFormComponent } from '../components/auth/LoginFormComponent';
 
 const COMPONENTS = [
     SignInComponent,

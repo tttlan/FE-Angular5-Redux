@@ -11,7 +11,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/take';
 
 import { User } from '../models/user.model';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../services/AuthService';
 import { AuthActionTypes } from '../shared/constants/AuthActionTypes';
 import * as fromAuthActions from '../actions/auth.action';
 
