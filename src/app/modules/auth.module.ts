@@ -7,10 +7,10 @@ import { EffectsModule } from '@ngrx/effects';
 import { CoreModule } from './core.module';
 import { AuthService } from '../services/AuthService';
 import { reducers } from '../reducers/auth/index';
-import { AuthEffects } from '../effects/auth.effect';
+import { AuthEffects } from '../effects/AuthEffect';
 
 import { AuthRoutingModule } from './auth-routing.module';
-import { SignInComponent } from '../containers/auth/sign-in.page';
+import { SignInComponent } from '../containers/auth/SignInComponent';
 import { LoginFormComponent } from '../components/auth/LoginFormComponent';
 
 const COMPONENTS = [

@@ -2,28 +2,28 @@
 import { UIUtils } from '../../utils/UIUtils';
 
 // import auth actions
-import { Actions } from '../../actions/auth.action';
+import { Actions } from '../../actions/AuthAction';
 
 // import auth action type
 import { AuthActionTypes } from '../../shared/constants/AuthActionTypes';
 
 // import models
-import { Auth, State, initialState } from '../../models/auth.model';
+import { Auth, AuthStore, initialState } from '../../models/auth.model';
 import { User } from '../../models/user.model';
 
 
 export interface AuthState {
-    auth: State;
+    auth: AuthStore;
 }
 
 /**
  * Reducer function
- * 
+ *
  * @function reducer
- * @param {State} state current state
+ * @param {AuthStore} state current state
  * @param {Actions} action incoming action
  */
-export function reducer(state: any = initialState, action: Actions): State {
+export function reducer(state: any = initialState, action: Actions): AuthStore {
     switch (action.type) {
         case AuthActionTypes.SIGN_IN: {
             return {
@@ -57,7 +57,7 @@ export function reducer(state: any = initialState, action: Actions): State {
     }
 }
 
-export const getError = (state: State) => state.error;
-export const getLoading = (state: State) => state.loading;
-export const getLoggedIn = (state: State) => state.loggedIn;
-export const getUser = (state: State) => state.user;
+export const getError = (state: AuthStore) => state.error;
+export const getLoading = (state: AuthStore) => state.loading;
+export const getLoggedIn = (state: AuthStore) => state.loggedIn;
+export const getUser = (state: AuthStore) => state.user;

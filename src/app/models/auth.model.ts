@@ -13,18 +13,18 @@ export const initialAuth: Auth = {
 };
 
 /**
-* State
-* 
+* AuthStore
+*
 * @interface State
 */
-export interface State {
+export interface AuthStore {
     loggedIn: boolean;
     user: User | null;
     error: any | null;
     loading: boolean;
 }
 
-export const initialState: State = {
+export const initialState: AuthStore = {
     loggedIn: false,
     user: null,
     error: null,

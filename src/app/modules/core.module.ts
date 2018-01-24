@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 // import core containers
-import { NotFoundPageComponent } from '../containers/not-found/not-found.page';
+import { NotFoundComponent } from '../containers/not-found/NotFoundComponent';
 
 // import core components
 import { ShowErrorsComponent } from '../components/show-errors.component';
@@ -20,7 +20,7 @@ import { CustomMaterialModule } from '../modules/material.module';
 const CORE_COMPONENTS = [
     ShowErrorsComponent,
     LayoutComponent,
-    NotFoundPageComponent,
+    NotFoundComponent,
     InputPatternValidatorDirective,
     PassWordPatternValidatorDirective
 ];

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {BaseService} from "../../services/BaseService";
 import {HttpClient} from "@angular/common/http";
 
@@ -6,7 +6,7 @@ import {HttpClient} from "@angular/common/http";
     moduleId: module.id,
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'home',
-    templateUrl: './home.page.html'
+    templateUrl: './HomePageView.html'
 })
 
 export class HomeComponent implements OnInit {
@@ -15,8 +15,5 @@ export class HomeComponent implements OnInit {
 
     }
     ngOnInit() {
-        this.http.get('http://jsonplaceholder.typicode.com/posts').then(data => {
-            console.log(data);
-        });
     }
 }

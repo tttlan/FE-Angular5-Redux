@@ -26,8 +26,8 @@ import {
 } from './modules/index';
 
 // import app component
-import { AppPageComponent } from './containers/app/app.page';
-import {TokenInterceptor} from "./TokenInterceptor";
+import { AppPageComponent } from './containers/app/AppPageComponent';
+import {TokenInterceptor} from "./utils/TokenInterceptor";
 import {BaseService} from "./services/BaseService";
 import {ApiHelpers} from "./utils/ApiHelpers";
 import {UserStore} from "./store/UserStore";

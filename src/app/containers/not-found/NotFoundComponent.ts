@@ -6,10 +6,10 @@ import RS from '../../shared/resources/resource-manager';
     moduleId: module.id,
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'not-found-page',
-    templateUrl: './not-found.page.html'
+    templateUrl: './NotFoundView.html'
 })
 
-export class NotFoundPageComponent implements OnInit {
+export class NotFoundComponent implements OnInit {
     resource: any;
 
     ngOnInit() {
