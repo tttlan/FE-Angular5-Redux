@@ -32,6 +32,8 @@ gulp.task('copy-respondjs', gulpCommon.copyRespondjsTask);
 gulp.task('copy-xdomainjs', gulpCommon.copyXdomainjsTask);
 gulp.task('copy-tslib', gulpCommon.copyTslibTask);
 gulp.task('copy-lodash', gulpCommon.copyLodashTask);
+gulp.task('copy-crypto', gulpCommon.copyCryptoTask);
+gulp.task('copy-string-format', gulpCommon.copyStringFormatTask);
 gulp.task('copy-ngrx-store-freeze', gulpCommon.copyNgrxStoreFreezeTask);
 gulp.task('copy-deep-freeze-strict', gulpCommon.copyDeepFreezeStrictTask);
 gulp.task('copy-hammerjs', gulpCommon.copyHammerjsTask);
@@ -41,7 +43,9 @@ gulp.task('bundle-js', gulpCommon.bundleJsTask);
 gulp.task('tslint', gulpCommon.tslintTask);
 gulp.task('compile-ts', ['make-config-file'], gulpCommon.compileTsWithMapTask);
 gulp.task('watch', gulpCommon.watchTask);
-
+gulp.task('copy-urlencode', function () {
+    return gulpCommon.browserifyFiles();
+});
 
 /**
  * Gulp task for start server

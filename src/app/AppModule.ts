@@ -30,7 +30,7 @@ import { AppPageComponent } from './containers/app/AppPageComponent';
 import {TokenInterceptor} from "./utils/TokenInterceptor";
 import {BaseService} from "./services/BaseService";
 import {ApiHelpers} from "./utils/ApiHelpers";
-import {UserStore} from "./store/UserStore";
+import {GlobalApp} from "./utils/GlobalApps";
 
 @NgModule({
     declarations: [
@@ -64,7 +64,7 @@ import {UserStore} from "./store/UserStore";
         },
         BaseService,
         ApiHelpers,
-        UserStore
+        GlobalApp
     ],
     bootstrap: [AppPageComponent]
 })

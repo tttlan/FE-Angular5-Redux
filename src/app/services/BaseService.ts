@@ -35,9 +35,17 @@ export class BaseService {
     }
 
     post<T>(url: any, options: any) {
+        let retryOptions = {
+            url: url,
+            options: options
+        };
         let method = this.httpVerbs.POST,
             body = {};
         body["data"] = options.data;
+        body["items"] = options.items;
+        body["meta"] = {
+            "type" : options.meta
+        };
         options.body = _.cloneDeep(body);
         try {
             body = JSON.stringify(body, (key, value) => {
@@ -72,7 +80,6 @@ export class BaseService {
         let method = this.httpVerbs.DELETE;
         return this.async<T>(method, url, null);
     }
-
 
     async<T>(method: any, url: any, body: any) {
         return this.http[_.lowerCase(method)](url, (method === HTTP_VERBS.POST) || (method === HTTP_VERBS.PUT) ? body : null).subscribe((res: any) => {

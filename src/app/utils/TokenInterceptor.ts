@@ -4,20 +4,29 @@ import {
 } from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {Injectable} from "@angular/core";
+import {GlobalApp} from "./GlobalApps";
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-    constructor() {
+    constructor(private globalApp: GlobalApp) {
     }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         console.log(JSON.stringify(req));
         const started = Date.now();
-        let token: string = "1234656456456456";
-        if (token) {
-            req = req.clone({headers: req.headers.set('Authorization', 'Bearer ' + token) });
+        let reqOptions = {},
+            headers,
+            token;
+        if (req.body.email && req.body.password) {
+            let password = this.globalApp.hassPassword(req.body.password);
+
+            headers = this.globalApp.getHeader(req.method, req.url, req.body.email, password, req.body);
+            token = req.body.email;
+        } else {
+
         }
+            req = req.clone({headers: req.headers.set('Authorization', 'Bearer ' + token) });
 
         if (!req.headers.has('Content-Type')) {
             req = req.clone({
@@ -43,5 +52,6 @@ export class TokenInterceptor implements HttpInterceptor {
                 }
             });
     }
+
 
 }

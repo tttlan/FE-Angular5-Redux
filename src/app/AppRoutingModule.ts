@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { NotFoundPageComponent } from './containers/not-found/NotFoundComponent';
+import { NotFoundComponent } from './containers/not-found/NotFoundComponent';
 import { AuthGuardService } from './services/AuthGuardService';
 
 const routes: Routes = [
@@ -12,7 +12,7 @@ const routes: Routes = [
     },
     {
         path: '404',
-        component: NotFoundPageComponent
+        component: NotFoundComponent
     },
     {
         path: 'auth',

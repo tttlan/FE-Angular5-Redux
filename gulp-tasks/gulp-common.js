@@ -19,7 +19,8 @@ const runSequence = require('run-sequence').use(gulp);
 const uglify = require('gulp-uglify');
 const ngAnnotate = require('gulp-ng-annotate');
 const gp_concat = require('gulp-concat');
-
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
 const conf = require('../conf/gulp.conf');
 const server = require('../conf/server.conf')();
 const tsProject = tsc.createProject('./tsconfig.json');
@@ -217,6 +218,14 @@ module.exports = () => {
             return gulp.src(conf.configs.lodash)
                 .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder));
         },
+        copyCryptoTask: () => {
+            return gulp.src(conf.configs.cryptoJs)
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder));
+        },
+        copyStringFormatTask: () => {
+            return gulp.src(conf.configs.stringFormat)
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder));
+        },
         copyDeepFreezeStrictTask: () => {
             return gulp.src(conf.configs.deepFreezeStrict)
                 .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + 'deep-freeze-strict/'));
@@ -257,6 +266,16 @@ module.exports = () => {
                 .on('error', conf.errorHandler)
                 .pipe(gulp.dest(conf.paths.build + conf.paths.buildJsFolder));
         },
+        browserifyFiles: function() {
+           // var urlencode = gulp.src(conf.configs.urlencode);
+            var urlencode = 'node_modules/urlencode/lib/urlencode.js';
+            return browserify([urlencode], {standalone: "urlencode"})
+                .bundle()
+                //Pass desired output filename to vinyl-source-stream
+                .pipe(source('urlencode.js'))
+                // Start piping stream to tasks!
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder));
+        },
         vendorJsTask: () => {
             return runSequence(
                 'copy-system-conf-file',
@@ -275,6 +294,9 @@ module.exports = () => {
                     'copy-xdomainjs',
                     'copy-tslib',
                     'copy-lodash',
+                    'copy-urlencode',
+                    'copy-crypto',
+                    'copy-string-format',
                     'copy-deep-freeze-strict'
                 ],
                 conf.errorHandler
@@ -356,6 +378,8 @@ module.exports = () => {
                     plugins.livereload.changed(file);
                 }, 1000);
             });
+
+
         }
     }
 };

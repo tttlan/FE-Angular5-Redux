@@ -32,7 +32,6 @@ const CORE_COMPONENTS = [
         RouterModule,
         fromAngularForms.FormsModule,
         fromAngularForms.ReactiveFormsModule,
-
         CustomMaterialModule
     ],
     exports: CORE_COMPONENTS

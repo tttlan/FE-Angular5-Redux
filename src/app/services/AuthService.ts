@@ -3,7 +3,6 @@ import { initialUser } from '../models/user.model';
 import { Auth } from '../models/auth.model';
 import {BaseService} from "./BaseService";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
-import {GlobalApp} from "../utils/GlobalApps";
 export const MOCK_USER = initialUser;
 @Injectable()
 export class AuthService {
@@ -12,29 +11,26 @@ export class AuthService {
     user = new BehaviorSubject<{}>(null);
 
 
-    constructor(private http: BaseService, private helper: GlobalApp) {
-        if (this.authenticated()) {
-            this.setLogin(true);
-            this.setUser(this.helper.getCurrentUser());
-        }
+    constructor(private http: BaseService) {
+
     }
 
-    signIn(auth: Auth) {
+    signIn({username, password}: Auth) {
 
-        const url = "http://localhost:5000/users/login",
+        let url = "http://localhost:5000/users/login",
         options = {
-                username: auth.username,
-                password: auth.password
+                username: username,
+                password: password
             };
-        return this.http.post<Auth>(url, options)
-            .then((user) => {
-                const token = user && user["token"];
-                if (token) {
-                    this.helper.setCurrentUser(user);
-                    this.setLogin(true);
-                    this.setUser(this.helper.getCurrentUser());
-                }
-            });
+        return this.http.post<Auth>(url, options);
+            // .then((user) => {
+            //     const token = user && user["token"];
+            //     if (token) {
+            //         this.helper.setCurrentUser(user);
+            //         this.setLogin(true);
+            //         this.setUser(this.helper.getCurrentUser());
+            //     }
+            // });
         // if (auth.username === MOCK_USER.username && auth.password === MOCK_USER.password) {
         //     return of(MOCK_USER);
         // }
@@ -60,15 +56,7 @@ export class AuthService {
         this.user.asObservable();
     }
 
-    /**
-     * Check userInfo in local storage
-     */
-    authenticated() {
-        if (this.helper.getCurrentUser()) {
-            return true;
-        }
-        return false;
-    }
+
 
 
 }
