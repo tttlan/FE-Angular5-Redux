@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { initialUser } from '../models/user.model';
-import { Auth } from '../models/auth.model';
+import { initialUser } from '../models/UserModel';
+import { Auth } from '../models/AuthModel';
 import {BaseService} from "./BaseService";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 export const MOCK_USER = initialUser;

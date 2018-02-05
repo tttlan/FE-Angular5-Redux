@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { AbstractControlDirective, AbstractControl } from '@angular/forms';
 
-import RS from '../shared/resources/resource-manager';
+import RS from '../shared/resources/ResourceManager';
 
 @Component({
     moduleId: module.id,

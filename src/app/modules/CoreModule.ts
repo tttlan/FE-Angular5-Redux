@@ -4,18 +4,18 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 // import core containers
-import { NotFoundComponent } from '../containers/not-found/NotFoundComponent';
+import { NotFoundComponent } from '../containers/not-found/NotFoundPageComponent';
 
 // import core components
-import { ShowErrorsComponent } from '../components/show-errors.component';
-import { LayoutComponent } from '../components/layout.component';
+import { ShowErrorsComponent } from '../components/ShowErrorsComponent';
+import { LayoutComponent } from '../components/LayoutComponent';
 
 // import core directives
 import { InputPatternValidatorDirective } from '../shared/directives/input-pattern-validator.directive';
 import { PassWordPatternValidatorDirective } from '../shared/directives/password-validator.directive';
 
 // import another modules
-import { CustomMaterialModule } from '../modules/material.module';
+import { CustomMaterialModule } from '../modules/MaterialModule';
 
 const CORE_COMPONENTS = [
     ShowErrorsComponent,
