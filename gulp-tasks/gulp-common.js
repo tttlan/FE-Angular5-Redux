@@ -73,7 +73,7 @@ module.exports = () => {
     };
 
     var minifyIndex = () => {
-        OPTIONS.DO_UGLIFY = process.env.NODE_ENV === 'dev' ? false : true;
+        // OPTIONS.DO_UGLIFY = process.env.NODE_ENV === 'dev' ? false : true;
 
         return gulp.src(conf.paths.src + conf.paths.appIndexFile)
             .pipe(plugins.if(OPTIONS.DO_UGLIFY, htmlmin(conf.htmlmin)))
@@ -100,7 +100,6 @@ module.exports = () => {
                 });
         },
         copyViewsTask: () => {
-            OPTIONS.DO_UGLIFY = true;
             minifyHtml();
         },
         copyImagesTask: () => {
