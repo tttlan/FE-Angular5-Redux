@@ -11,7 +11,7 @@ import {
 } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { reducers, metaReducers } from './reducers/CoreReducer';
+import { reducers, metaReducers } from './reducers/core.reducer';
 import { CustomRouterStateSerializer } from './utils/Utils';
 
 // import settings

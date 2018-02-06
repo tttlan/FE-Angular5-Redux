@@ -8,19 +8,18 @@ module.exports = () => {
     return {
         buildTask: () => {
             return runSequence(
-                'clean', 
-                [
+                'clean', [
                     'copy-fonts',
                     'copy-images',
                     'vendor-js',
                     'make-config-file',
                     'make-version-file',
-                    'copy-views',
-                    'copy-index',
-                    'vendor-css',
-                    'sass',
+                    'copy-views-build',
+                    'copy-index-build',
+                    'vendor-css-build',
+                    'sass-build',
                     'tslint',
-                    'compile-ts'
+                    'compile-ts-build'
                 ],
                 conf.errorHandler);
         }
