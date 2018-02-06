@@ -63,7 +63,7 @@ module.exports = () => {
     };
 
     var minifyHtml = () => {
-        OPTIONS.DO_UGLIFY = process.env.NODE_ENV === 'dev' ? false : true;
+        // OPTIONS.DO_UGLIFY = process.env.NODE_ENV === 'dev' ? false : true; //need check
 
         return gulp.src([
             conf.paths.src + conf.paths.appHtmlFile
