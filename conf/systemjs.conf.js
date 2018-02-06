@@ -47,7 +47,7 @@
             'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api/bundles/in-memory-web-api.umd.js',
             'tslib': 'npm:tslib.js',
             'lodash': 'npm:lodash.js',
-            'crypto-js': 'npm:crypto-js.js',
+            'crypto-js': 'npm:cryptoJs/crypto-js.js',
             'urlencode': 'npm:urlencode.js',
             'string-format':'npm:string-format.js'
         },

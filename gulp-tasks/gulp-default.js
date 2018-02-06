@@ -8,7 +8,8 @@ module.exports = () => {
     return {
         defaultTask: () => {
             return runSequence(
-                'clean', [
+                'clean',
+                [
                     'copy-fonts',
                     'copy-images',
                     'vendor-css',
