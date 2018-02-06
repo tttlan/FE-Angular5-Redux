@@ -43,7 +43,7 @@
         "trailing-comma": true,
         "no-trailing-whitespace": false,
         "no-unused-expression": true,
-        "no-use-before-declare": true,
+        "no-use-before-declare": false,
         "no-var-requires": true,
         "one-line": [
             true,
