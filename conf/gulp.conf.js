@@ -103,16 +103,18 @@ exports.configs = {
     materialTheme: './node_modules/@angular/material/prebuilt-themes/indigo-pink.css',
     tslib: './node_modules/tslib/tslib.js',
     lodash: './node_modules/lodash/lodash.js',
-    cryptoJs: './node_modules/crypto-js/crypto-js.js',
-    deepFreezeStrict: './node_modules/deep-freeze-strict/**/*.js'
+    cryptoJs: './node_modules/crypto-js/*.js',
+    deepFreezeStrict: './node_modules/deep-freeze-strict/**/*.js',
+    urlencode: './node_modules/urlencode/lib/urlencode.js',
+    stringFormat: './node_modules/string-format/lib/string-format.js'
 };
 
 exports.bundleJs = [
     this.configs.jquery,
     this.configs.bootstrapJs,
     this.configs.moment,
+    this.configs.stringFormat,
     this.configs.momentTimeZone,
-    this.configs.cryptoJs,
     this.paths.src + this.paths.assetJsFile
 ];
 

@@ -1,5 +1,6 @@
 import { UIUtils } from './UIUtils';
 import * as CryptoJS from 'crypto-js';
+import * as urlencode from 'urlencode';
 
 export class GlobalApp {
     private _user: any = null;
@@ -7,6 +8,16 @@ export class GlobalApp {
     private _secretKey: string = 'qt';
     private _globalInfo: string = null;
     private _uiutils = new UIUtils();
+
+    hassPassword(password: any) {
+        if (!password) {
+            return true;
+        }
+        let hassPass = CryptoJS.SHA256(password);
+        return hassPass;
+
+
+    }
 
     encryptValue(value: string): string {
         if (!this._uiutils.isNullOrUndefined(value)) {
@@ -152,6 +163,64 @@ export class GlobalApp {
             return user.permissions;
         } else {
             return [];
+        }
+    }
+
+    //With login token is email, secret is hashPassword
+    getHeader(method: any, path: any, token: any, secret: any, body: any) {
+        try {
+            body = JSON.stringify(ksort(body));
+        } catch (error) {
+            body = "{}";
+        }
+        let nonce = getNonce(),
+            timestamp = Math.floor(Date.now() / 1000),
+            signature = generateSignature();
+
+        return {
+            Signature: signature,
+            Timestamp: timestamp,
+            Nonce: nonce
+        };
+
+        function getNonce() {
+            //Random string with 18 character
+            let strRandom = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 18);
+
+            //Get date with format YYYYMMDDHHMMSS
+            let date = new Date();
+            let dateString = date.toISOString().split('.')[0].replace(/[-T:]/g, '');
+
+            //Return nonce = string + date
+            return strRandom + dateString;
+        }
+
+        // Create a signature by Method (PUT) & URL Path & Timestamp & Nonce & Body
+        function generateSignature() {
+            let arrayPath = path.split('?');
+            let baseString = format('{0}&{1}&{2}&{3}&{4}', urlencode.encode(method), urlencode.encode(arrayPath[0]), urlencode.encode(timestamp), urlencode.encode(nonce), urlencode.encode(body));
+            let key = token + "&" + secret;
+            let sign = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA1(baseString, key));
+
+            return sign;
+        }
+
+        function ksort(obj: any) {
+            var keys = Object.keys(obj).sort(),
+                sortedObj = {};
+
+            for (var i in keys) {
+                if (keys.hasOwnProperty(i) && obj[keys[i]] !== null) {
+                    if (Object.prototype.toString.call(obj[keys[i]]) === '[object Date]') {
+                        obj[keys[i]] = obj[keys[i]].toISOString();
+                    } else if (Object.prototype.toString.call(obj[keys[i]]) === "[object Array]" || typeof obj[keys[i]] === "object") {
+                        obj[keys[i]] = ksort(obj[keys[i]]);
+                    }
+
+                    sortedObj[keys[i]] = obj[keys[i]];
+                }
+            }
+            return sortedObj;
         }
     }
 }

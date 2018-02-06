@@ -2,15 +2,15 @@
 import { Action } from '@ngrx/store';
 
 // import models
-import { Auth } from '../models/auth.model';
-import { User } from '../models/user.model';
+import { Auth } from '../models/AuthModel';
+import { User } from '../models/UserModel';
 
 // import auth action type
 import { AuthActionTypes } from '../shared/constants/AuthActionTypes';
 
 /**
  * Sign in
- * 
+ *
  * @class SignInAction
  * @implements {Action}
  */
@@ -22,7 +22,7 @@ export class SignInAction implements Action {
 
 /**
  * Sign in success
- * 
+ *
  * @class SingInSuccessAction
  * @implements {Action}
  * @return {User}
@@ -35,7 +35,7 @@ export class SingInSuccessAction implements Action {
 
 /**
  * Sign in error
- * 
+ *
  * @class SignInErrorAction
  * @implements {Action}
  * @returns {any}
@@ -48,7 +48,7 @@ export class SignInErrorAction implements Action {
 
 /**
  * Sign in redirect
- * 
+ *
  * @class SignInRedirectAction
  * @implements {Action}
  * @returns {any}
@@ -61,7 +61,7 @@ export class SignInRedirectAction implements Action {
 
 /**
  * Sign out action
- * 
+ *
  * @class SignOutAction
  * @implements {Action}
  * @returns {any}
@@ -74,7 +74,7 @@ export class SignOutAction implements Action {
 
 /**
  * Sign out success
- * 
+ *
  * @class SignOutSuccessAction
  * @implements {Action}
  * @returns {any}
@@ -87,7 +87,7 @@ export class SignOutSuccessAction implements Action {
 
 /**
  * Sign out error
- * 
+ *
  * @class SignOutErrorAction
  * @implements {Action}
  * @returns {any}
@@ -100,7 +100,7 @@ export class SignOutErrorAction implements Action {
 
 /**
  * Actions type
- * 
+ *
  * @type {Actions}
  */
 export type Actions =

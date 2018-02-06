@@ -19,7 +19,8 @@ const runSequence = require('run-sequence').use(gulp);
 const uglify = require('gulp-uglify');
 const ngAnnotate = require('gulp-ng-annotate');
 const gp_concat = require('gulp-concat');
-
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
 const conf = require('../conf/gulp.conf');
 const server = require('../conf/server.conf')();
 const tsProject = tsc.createProject('./tsconfig.json');
@@ -33,6 +34,8 @@ module.exports = () => {
     };
 
     var sass = () => {
+        OPTIONS.DO_SOURCEMAPS = process.env.NODE_ENV === 'dev' ? true : false;
+
         return gulp.src(conf.paths.src + conf.paths.mainScss)
             .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.init()))
             .pipe(plugins.sass())
@@ -46,6 +49,8 @@ module.exports = () => {
     };
 
     var tsCompile = () => {
+        OPTIONS.DO_SOURCEMAPS = process.env.NODE_ENV === 'dev' ? true : false;
+
         let tsResult = gulp.src([
             conf.paths.src + '/**/*.ts'
         ])
@@ -58,6 +63,8 @@ module.exports = () => {
     };
 
     var minifyHtml = () => {
+        OPTIONS.DO_UGLIFY = process.env.NODE_ENV === 'dev' ? true : false;
+
         return gulp.src([
             conf.paths.src + conf.paths.appHtmlFile
         ])
@@ -66,12 +73,16 @@ module.exports = () => {
     };
 
     var minifyIndex = () => {
+        OPTIONS.DO_UGLIFY = process.env.NODE_ENV === 'dev' ? true : false;
+
         return gulp.src(conf.paths.src + conf.paths.appIndexFile)
             .pipe(plugins.if(OPTIONS.DO_UGLIFY, htmlmin(conf.htmlmin)))
             .pipe(gulp.dest(conf.paths.build + '/'));
     };
 
     var vendorCSS = () => {
+        OPTIONS.DO_SOURCEMAPS = process.env.NODE_ENV === 'dev' ? true : false;
+
         return gulp.src(conf.vendorCss)
             .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.init()))
             .pipe(plugins.concat('vendor.bundle.css'))
@@ -88,12 +99,7 @@ module.exports = () => {
                     force: true
                 });
         },
-        copyViewsWithMinifyTask: () => {
-            OPTIONS.DO_UGLIFY = true;
-            minifyHtml();
-        },
-        copyViewsWithoutMinifyTask: () => {
-            OPTIONS.DO_UGLIFY = false;
+        copyViewsTask: () => {
             minifyHtml();
         },
         copyImagesTask: () => {
@@ -105,16 +111,10 @@ module.exports = () => {
             return gulp.src(conf.paths.src + conf.paths.assetFontsFile)
                 .pipe(gulp.dest(conf.paths.build + conf.paths.buildFontsFolder));
         },
-        copyIndexWithMinifyTask: () => {
-            OPTIONS.DO_UGLIFY = true;
+        copyIndexTask: () => {
             minifyIndex();
         },
-        copyIndexWithoutMinifyTask: () => {
-            OPTIONS.DO_UGLIFY = false;
-            minifyIndex();
-        },
-        sassWithMapTask: () => {
-            OPTIONS.DO_SOURCEMAPS = true;
+        sassTask: () => {
             sass();
         },
         sassWithoutMapTask: () => {
@@ -158,12 +158,7 @@ module.exports = () => {
                 conf.paths.build + conf.paths.environmentFile + 'AppSettings.js'
             ]);
         },
-        vendorCssTaskWithMapTask: () => {
-            OPTIONS.DO_SOURCEMAPS = true;
-            vendorCSS();
-        },
-        vendorCssTaskWithoutMapTask: () => {
-            OPTIONS.DO_SOURCEMAPS = false;
+        vendorCssTask: () => {
             vendorCSS();
         },
         copyAngularTask: () => {
@@ -217,6 +212,14 @@ module.exports = () => {
             return gulp.src(conf.configs.lodash)
                 .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder));
         },
+        copyCryptoTask: () => {
+            return gulp.src(conf.configs.cryptoJs)
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + 'cryptoJs/'));
+        },
+        copyStringFormatTask: () => {
+            return gulp.src(conf.configs.stringFormat)
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder));
+        },
         copyDeepFreezeStrictTask: () => {
             return gulp.src(conf.configs.deepFreezeStrict)
                 .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + 'deep-freeze-strict/'));
@@ -240,7 +243,7 @@ module.exports = () => {
             return gulp.src(conf.configs.ng2Bootstrap)
                 .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + 'ng2-bootstrap/'));
         },
-        copyNgRx: () => {
+        copyNgRxTask: () => {
             return gulp.src(conf.configs.ngrx)
                 .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + '@ngrx/'));
         },
@@ -257,10 +260,20 @@ module.exports = () => {
                 .on('error', conf.errorHandler)
                 .pipe(gulp.dest(conf.paths.build + conf.paths.buildJsFolder));
         },
+        browserifyFilesTask: function() {
+            var urlencode = conf.paths.urlencode;
+            return browserify([urlencode], {standalone: "urlencode"})
+                .bundle()
+                //Pass desired output filename to vinyl-source-stream
+                .pipe(source('urlencode.js'))
+                // Start piping stream to tasks!
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder));
+        },
         vendorJsTask: () => {
             return runSequence(
                 'copy-system-conf-file',
-                'bundle-js', [
+                'bundle-js', 
+                [
                     'copy-angular',
                     'copy-rxjs',
                     'copy-angularWebApi',
@@ -275,6 +288,9 @@ module.exports = () => {
                     'copy-xdomainjs',
                     'copy-tslib',
                     'copy-lodash',
+                    'copy-urlencode',
+                    'copy-crypto',
+                    'copy-string-format',
                     'copy-deep-freeze-strict'
                 ],
                 conf.errorHandler
@@ -290,12 +306,7 @@ module.exports = () => {
                 }))
                 .pipe(tslint.report());
         },
-        compileTsWithMapTask: () => {
-            OPTIONS.DO_SOURCEMAPS = true;
-            tsCompile();
-        },
-        compileTsWithoutMapTask: () => {
-            OPTIONS.DO_SOURCEMAPS = false;
+        compileTsTask: () => {
             tsCompile();
         },
         watchTask: () => {
@@ -356,6 +367,8 @@ module.exports = () => {
                     plugins.livereload.changed(file);
                 }, 1000);
             });
+
+
         }
     }
 };

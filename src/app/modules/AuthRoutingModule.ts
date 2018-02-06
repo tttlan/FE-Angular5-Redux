@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from '../containers/home/home.page';
+import { SignInComponent } from '../containers/auth/SignInPageComponent';
 
 const routes: Routes = [
     {
-        path: 'dashboard',
-        component: HomeComponent
+        path: 'sign-in',
+        component: SignInComponent
     },
     {
         path: '**',
@@ -23,4 +23,4 @@ const routes: Routes = [
     ]
 })
 
-export class HomeRoutingModule {}
+export class AuthRoutingModule {}

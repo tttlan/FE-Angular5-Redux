@@ -1,7 +1,7 @@
 import { Directive } from '@angular/core';
 import { NG_VALIDATORS, FormControl, Validator, ValidationErrors } from '@angular/forms';
 
-import RS from '../../shared/resources/resource-manager';
+import RS from '../../shared/resources/ResourceManager';
 import { CustomValidators } from '../../utils/Validators';
 import { UIUtils } from '../../utils/UIUtils';
 
