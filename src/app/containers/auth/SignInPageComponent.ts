@@ -2,8 +2,8 @@ import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import { Auth, initialAuth, AuthStore } from '../../models/auth.model';
-import RS from '../../shared/resources/resource-manager';
+import { Auth, initialAuth, AuthStore } from '../../models/AuthModel';
+import RS from '../../shared/resources/ResourceManager';
 import * as fromAuthActions from '../../actions/AuthAction';
 import * as fromAuthReducers from '../../reducers/auth/index';
 
@@ -11,10 +11,10 @@ import * as fromAuthReducers from '../../reducers/auth/index';
     moduleId: module.id,
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'sign-in',
-    templateUrl: './SignInView.html'
+    templateUrl: './SignInPageView.html'
 })
 
-export class SignInComponent implements OnInit {
+export class SignInPageComponent implements OnInit {
     resource: any;
     auth: Auth;
     error$: Observable<any>;

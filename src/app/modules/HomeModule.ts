@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import * as fromAngularForms from '@angular/forms';
 // import { StoreModule } from '@ngrx/store';
 // import { EffectsModule } from '@ngrx/effects';
-import { HomeRoutingModule } from './home-routing.module';
+import { HomeRoutingModule } from './HomeRoutingModule';
 import { AuthService } from '../services/AuthService';
 
 import { HomeComponent } from '../containers/home/HomePageComponent';

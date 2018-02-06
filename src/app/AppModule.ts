@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import {
@@ -11,7 +11,7 @@ import {
 } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { reducers, metaReducers } from './reducers/core.reducer';
+import { reducers, metaReducers } from './reducers/CoreReducer';
 import { CustomRouterStateSerializer } from './utils/Utils';
 
 // import settings
@@ -27,17 +27,13 @@ import {
 
 // import app component
 import { AppPageComponent } from './containers/app/AppPageComponent';
-import {TokenInterceptor} from "./utils/TokenInterceptor";
-import {BaseService} from "./services/BaseService";
-import {ApiHelpers} from "./utils/ApiHelpers";
-import {GlobalApp} from "./utils/GlobalApps";
+import { TokenInterceptor } from "./utils/TokenInterceptor";
 
 @NgModule({
     declarations: [
         AppPageComponent
     ],
     imports: [
-        CommonModule,
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
@@ -61,10 +57,7 @@ import {GlobalApp} from "./utils/GlobalApps";
             provide: HTTP_INTERCEPTORS,
             useClass: TokenInterceptor,
             multi: true
-        },
-        BaseService,
-        ApiHelpers,
-        GlobalApp
+        }
     ],
     bootstrap: [AppPageComponent]
 })

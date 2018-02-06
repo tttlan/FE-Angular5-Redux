@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { SignInComponent } from '../containers/auth/SignInComponent';
+import { SignInPageComponent } from '../containers/auth/SignInPageComponent';
 
 const routes: Routes = [
     {
         path: 'sign-in',
-        component: SignInComponent
+        component: SignInPageComponent
     },
     {
         path: '**',

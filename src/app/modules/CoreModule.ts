@@ -4,23 +4,27 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 // import core containers
-import { NotFoundComponent } from '../containers/not-found/NotFoundComponent';
+import { NotFoundPageComponent } from '../containers/not-found/NotFoundPageComponent';
 
 // import core components
-import { ShowErrorsComponent } from '../components/show-errors.component';
-import { LayoutComponent } from '../components/layout.component';
+import { ShowErrorsComponent } from '../components/ShowErrorsComponent';
+import { LayoutComponent } from '../components/LayoutComponent';
 
 // import core directives
-import { InputPatternValidatorDirective } from '../shared/directives/input-pattern-validator.directive';
-import { PassWordPatternValidatorDirective } from '../shared/directives/password-validator.directive';
+import { InputPatternValidatorDirective } from '../shared/directives/InputPatternValidatorDirective';
+import { PassWordPatternValidatorDirective } from '../shared/directives/PasswordValidatorDirective';
 
 // import another modules
-import { CustomMaterialModule } from '../modules/material.module';
+import { CustomMaterialModule } from '../modules/MaterialModule';
+
+import { BaseService } from "../services/BaseService";
+import { ApiHelpers } from "../utils/ApiHelpers";
+import { GlobalApp } from "../utils/GlobalApps";
 
 const CORE_COMPONENTS = [
     ShowErrorsComponent,
     LayoutComponent,
-    NotFoundComponent,
+    NotFoundPageComponent,
     InputPatternValidatorDirective,
     PassWordPatternValidatorDirective
 ];
@@ -40,7 +44,11 @@ export class CoreModule {
     static forRoot() {
         return {
             ngModule: CoreModule,
-            providers: []
+            providers: [
+                BaseService,
+                GlobalApp,
+                ApiHelpers
+            ]
         };
     }
 }

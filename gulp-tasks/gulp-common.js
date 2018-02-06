@@ -19,8 +19,8 @@ const runSequence = require('run-sequence').use(gulp);
 const uglify = require('gulp-uglify');
 const ngAnnotate = require('gulp-ng-annotate');
 const gp_concat = require('gulp-concat');
-var browserify = require('browserify');
-var source = require('vinyl-source-stream');
+const browserify = require('browserify');
+const source = require('vinyl-source-stream');
 const conf = require('../conf/gulp.conf');
 const server = require('../conf/server.conf')();
 const tsProject = tsc.createProject('./tsconfig.json');
@@ -34,6 +34,8 @@ module.exports = () => {
     };
 
     var sass = () => {
+        OPTIONS.DO_SOURCEMAPS = process.env.NODE_ENV === 'dev' ? true : false;
+
         return gulp.src(conf.paths.src + conf.paths.mainScss)
             .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.init()))
             .pipe(plugins.sass())
@@ -47,6 +49,8 @@ module.exports = () => {
     };
 
     var tsCompile = () => {
+        OPTIONS.DO_SOURCEMAPS = process.env.NODE_ENV === 'dev' ? true : false;
+
         let tsResult = gulp.src([
             conf.paths.src + '/**/*.ts'
         ])
@@ -59,6 +63,8 @@ module.exports = () => {
     };
 
     var minifyHtml = () => {
+        OPTIONS.DO_UGLIFY = process.env.NODE_ENV === 'dev' ? false : true;
+
         return gulp.src([
             conf.paths.src + conf.paths.appHtmlFile
         ])
@@ -67,12 +73,16 @@ module.exports = () => {
     };
 
     var minifyIndex = () => {
+        OPTIONS.DO_UGLIFY = process.env.NODE_ENV === 'dev' ? false : true;
+
         return gulp.src(conf.paths.src + conf.paths.appIndexFile)
             .pipe(plugins.if(OPTIONS.DO_UGLIFY, htmlmin(conf.htmlmin)))
             .pipe(gulp.dest(conf.paths.build + '/'));
     };
 
     var vendorCSS = () => {
+        OPTIONS.DO_SOURCEMAPS = process.env.NODE_ENV === 'dev' ? true : false;
+
         return gulp.src(conf.vendorCss)
             .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.init()))
             .pipe(plugins.concat('vendor.bundle.css'))
@@ -89,12 +99,8 @@ module.exports = () => {
                     force: true
                 });
         },
-        copyViewsWithMinifyTask: () => {
+        copyViewsTask: () => {
             OPTIONS.DO_UGLIFY = true;
-            minifyHtml();
-        },
-        copyViewsWithoutMinifyTask: () => {
-            OPTIONS.DO_UGLIFY = false;
             minifyHtml();
         },
         copyImagesTask: () => {
@@ -106,20 +112,10 @@ module.exports = () => {
             return gulp.src(conf.paths.src + conf.paths.assetFontsFile)
                 .pipe(gulp.dest(conf.paths.build + conf.paths.buildFontsFolder));
         },
-        copyIndexWithMinifyTask: () => {
-            OPTIONS.DO_UGLIFY = true;
+        copyIndexTask: () => {
             minifyIndex();
         },
-        copyIndexWithoutMinifyTask: () => {
-            OPTIONS.DO_UGLIFY = false;
-            minifyIndex();
-        },
-        sassWithMapTask: () => {
-            OPTIONS.DO_SOURCEMAPS = true;
-            sass();
-        },
-        sassWithoutMapTask: () => {
-            OPTIONS.DO_SOURCEMAPS = false;
+        sassTask: () => {
             sass();
         },
         lintFixTask: () => {
@@ -159,19 +155,14 @@ module.exports = () => {
                 conf.paths.build + conf.paths.environmentFile + 'AppSettings.js'
             ]);
         },
-        vendorCssTaskWithMapTask: () => {
-            OPTIONS.DO_SOURCEMAPS = true;
-            vendorCSS();
-        },
-        vendorCssTaskWithoutMapTask: () => {
-            OPTIONS.DO_SOURCEMAPS = false;
+        vendorCssTask: () => {
             vendorCSS();
         },
         copyAngularTask: () => {
             return gulp.src([
                 conf.configs.angular,
                 '!' + conf.configs.angularHttp
-                ])
+            ])
                 .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + '@angular/'));
         },
         copyRxjsTask: () => {
@@ -220,7 +211,7 @@ module.exports = () => {
         },
         copyCryptoTask: () => {
             return gulp.src(conf.configs.cryptoJs)
-                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder));
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + 'cryptoJs/'));
         },
         copyStringFormatTask: () => {
             return gulp.src(conf.configs.stringFormat)
@@ -249,7 +240,7 @@ module.exports = () => {
             return gulp.src(conf.configs.ng2Bootstrap)
                 .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + 'ng2-bootstrap/'));
         },
-        copyNgRx: () => {
+        copyNgRxTask: () => {
             return gulp.src(conf.configs.ngrx)
                 .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + '@ngrx/'));
         },
@@ -266,10 +257,9 @@ module.exports = () => {
                 .on('error', conf.errorHandler)
                 .pipe(gulp.dest(conf.paths.build + conf.paths.buildJsFolder));
         },
-        browserifyFiles: function() {
-           // var urlencode = gulp.src(conf.configs.urlencode);
-            var urlencode = 'node_modules/urlencode/lib/urlencode.js';
-            return browserify([urlencode], {standalone: "urlencode"})
+        browserifyFilesTask: function () {
+            var urlencode = conf.paths.urlencode;
+            return browserify([urlencode], { standalone: "urlencode" })
                 .bundle()
                 //Pass desired output filename to vinyl-source-stream
                 .pipe(source('urlencode.js'))
@@ -312,12 +302,7 @@ module.exports = () => {
                 }))
                 .pipe(tslint.report());
         },
-        compileTsWithMapTask: () => {
-            OPTIONS.DO_SOURCEMAPS = true;
-            tsCompile();
-        },
-        compileTsWithoutMapTask: () => {
-            OPTIONS.DO_SOURCEMAPS = false;
+        compileTsTask: () => {
             tsCompile();
         },
         watchTask: () => {

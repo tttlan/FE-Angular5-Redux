@@ -1,15 +1,15 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
-import RS from '../../shared/resources/resource-manager';
+import RS from '../../shared/resources/ResourceManager';
 
 @Component({
     moduleId: module.id,
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'not-found-page',
-    templateUrl: './NotFoundView.html'
+    templateUrl: './NotFoundPageView.html'
 })
 
-export class NotFoundComponent implements OnInit {
+export class NotFoundPageComponent implements OnInit {
     resource: any;
 
     ngOnInit() {

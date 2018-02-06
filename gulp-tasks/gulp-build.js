@@ -14,12 +14,12 @@ module.exports = () => {
                     'vendor-js',
                     'make-config-file',
                     'make-version-file',
-                    'copy-views-build',
-                    'copy-index-build',
-                    'vendor-css-build',
-                    'sass-build',
+                    'copy-views',
+                    'copy-index',
+                    'vendor-css',
+                    'sass',
                     'tslint',
-                    'compile-ts-build'
+                    'compile-ts'
                 ],
                 conf.errorHandler);
         }
