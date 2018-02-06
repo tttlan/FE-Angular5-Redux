@@ -7,12 +7,12 @@ import { RouterModule } from '@angular/router';
 import { NotFoundPageComponent } from '../containers/not-found/NotFoundPageComponent';
 
 // import core components
-import { ShowErrorsComponent } from '../components/show-errors.component';
-import { LayoutComponent } from '../components/layout.component';
+import { ShowErrorsComponent } from '../components/ShowErrorsComponent';
+import { LayoutComponent } from '../components/LayoutComponent';
 
 // import core directives
-import { InputPatternValidatorDirective } from '../shared/directives/input-pattern-validator.directive';
-import { PassWordPatternValidatorDirective } from '../shared/directives/password-validator.directive';
+import { InputPatternValidatorDirective } from '../shared/directives/InputPatternValidatorDirective';
+import { PassWordPatternValidatorDirective } from '../shared/directives/PasswordValidatorDirective';
 
 // import another modules
 import { CustomMaterialModule } from '../modules/MaterialModule';
