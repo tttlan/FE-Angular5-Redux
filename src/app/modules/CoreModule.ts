@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 // import core containers
-import { NotFoundComponent } from '../containers/not-found/NotFoundComponent';
+import { NotFoundPageComponent } from '../containers/not-found/NotFoundPageComponent';
 
 // import core components
 import { ShowErrorsComponent } from '../components/show-errors.component';
@@ -15,7 +15,7 @@ import { InputPatternValidatorDirective } from '../shared/directives/input-patte
 import { PassWordPatternValidatorDirective } from '../shared/directives/password-validator.directive';
 
 // import another modules
-import { CustomMaterialModule } from '../modules/material.module';
+import { CustomMaterialModule } from '../modules/MaterialModule';
 
 import { BaseService } from "../services/BaseService";
 import { ApiHelpers } from "../utils/ApiHelpers";
@@ -24,7 +24,7 @@ import { GlobalApp } from "../utils/GlobalApps";
 const CORE_COMPONENTS = [
     ShowErrorsComponent,
     LayoutComponent,
-    NotFoundComponent,
+    NotFoundPageComponent,
     InputPatternValidatorDirective,
     PassWordPatternValidatorDirective
 ];

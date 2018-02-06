@@ -11,10 +11,10 @@ import * as fromAuthReducers from '../../reducers/auth/index';
     moduleId: module.id,
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'sign-in',
-    templateUrl: './SignInView.html'
+    templateUrl: './SignInPageView.html'
 })
 
-export class SignInComponent implements OnInit {
+export class SignInPageComponent implements OnInit {
     resource: any;
     auth: Auth;
     error$: Observable<any>;
