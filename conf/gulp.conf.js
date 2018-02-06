@@ -113,7 +113,6 @@ exports.bundleJs = [
     this.configs.jquery,
     this.configs.bootstrapJs,
     this.configs.moment,
-    this.configs.stringFormat,
     this.configs.momentTimeZone,
     this.paths.src + this.paths.assetJsFile
 ];
