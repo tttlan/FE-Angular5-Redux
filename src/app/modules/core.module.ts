@@ -17,6 +17,10 @@ import { PassWordPatternValidatorDirective } from '../shared/directives/password
 // import another modules
 import { CustomMaterialModule } from '../modules/material.module';
 
+import { BaseService } from "../services/BaseService";
+import { ApiHelpers } from "../utils/ApiHelpers";
+import { GlobalApp } from "../utils/GlobalApps";
+
 const CORE_COMPONENTS = [
     ShowErrorsComponent,
     LayoutComponent,
@@ -40,7 +44,11 @@ export class CoreModule {
     static forRoot() {
         return {
             ngModule: CoreModule,
-            providers: []
+            providers: [
+                BaseService,
+                GlobalApp,
+                ApiHelpers
+            ]
         };
     }
 }

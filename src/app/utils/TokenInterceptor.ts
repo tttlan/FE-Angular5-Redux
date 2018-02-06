@@ -2,9 +2,9 @@ import {
     HttpHandler, HttpInterceptor, HttpRequest,
     HttpEvent, HttpResponse, HttpErrorResponse
 } from "@angular/common/http";
-import {Observable} from "rxjs/Observable";
-import {Injectable} from "@angular/core";
-import {GlobalApp} from "./GlobalApps";
+import { Observable } from "rxjs/Observable";
+import { Injectable } from "@angular/core";
+import { GlobalApp } from "./GlobalApps";
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -26,7 +26,7 @@ export class TokenInterceptor implements HttpInterceptor {
         } else {
 
         }
-            req = req.clone({headers: req.headers.set('Authorization', 'Bearer ' + token) });
+        req = req.clone({ headers: req.headers.set('Authorization', 'Bearer ' + token) });
 
         if (!req.headers.has('Content-Type')) {
             req = req.clone({
