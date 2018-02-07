@@ -258,6 +258,7 @@ module.exports = () => {
         },
         browserifyFilesTask: function () {
             var urlencode = conf.paths.urlencode;
+
             return browserify([urlencode], { standalone: "urlencode" })
                 .bundle()
                 //Pass desired output filename to vinyl-source-stream

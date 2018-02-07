@@ -10,7 +10,7 @@ import { Auth } from '../../models/AuthModel';
 
 export class LoginFormComponent implements OnInit {
     loginForm: fromAngularForms.FormGroup = new fromAngularForms.FormGroup({
-        username: new fromAngularForms.FormControl(''),
+        email: new fromAngularForms.FormControl(''),
         password: new fromAngularForms.FormControl(''),
         rememberMe: new fromAngularForms.FormControl('')
     });

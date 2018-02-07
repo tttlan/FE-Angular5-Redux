@@ -9,20 +9,11 @@ export class GlobalApp {
     private _globalInfo: string = null;
     private _uiutils = new UIUtils();
 
-    hassPassword(password: any) {
-        if (!password) {
-            return true;
-        }
-        let hassPass = CryptoJS.SHA256(password);
-        return hassPass;
-
-
-    }
 
     encryptValue(value: string): string {
         if (!this._uiutils.isNullOrUndefined(value)) {
             try {
-                return CryptoJS.AES.encrypt(JSON.stringify(value), this._secretKey);
+                return CryptoJS.AES.encrypt(JSON.stringify(value), this._secretKey).toString();
             } catch (err) {
                 console.log('encryptValue' , err);
             }
@@ -34,7 +25,7 @@ export class GlobalApp {
     decryptValue(value: string): string {
         if (!this._uiutils.isNullOrUndefined(value)) {
             try {
-                return CryptoJS.AES.encrypt(JSON.stringify(value), this._secretKey);
+                return CryptoJS.AES.encrypt(JSON.stringify(value), this._secretKey).toString();
             } catch (err) {
                 console.log('decryptValue' , err);
             }

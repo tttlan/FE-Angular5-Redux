@@ -3,6 +3,8 @@ import { initialUser } from '../models/UserModel';
 import { Auth } from '../models/AuthModel';
 import {BaseService} from "./BaseService";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import {_throw} from "rxjs/observable/throw";
+import {of} from "rxjs/observable/of";
 export const MOCK_USER = initialUser;
 @Injectable()
 export class AuthService {
@@ -15,27 +17,22 @@ export class AuthService {
 
     }
 
-    signIn({username, password}: Auth) {
+    signIn(auth: Auth): any {
+        // let url = "http://localhost:5000/users/login",
+        //     options = {
+        //         data: {
+        //             email: email,
+        //             password: password
+        //         }
+        //     };
 
-        let url = "http://localhost:5000/users/login",
-        options = {
-                username: username,
-                password: password
-            };
-        return this.http.post<Auth>(url, options);
-            // .then((user) => {
-            //     const token = user && user["token"];
-            //     if (token) {
-            //         this.helper.setCurrentUser(user);
-            //         this.setLogin(true);
-            //         this.setUser(this.helper.getCurrentUser());
-            //     }
-            // });
-        // if (auth.username === MOCK_USER.username && auth.password === MOCK_USER.password) {
-        //     return of(MOCK_USER);
-        // }
-        //
-        // return _throw(new Error('Invalid username or password'));
+        // return this.http.post<Auth>(url, options);
+
+        if (auth.email === MOCK_USER.email && auth.password === MOCK_USER.password) {
+            return of(MOCK_USER);
+        }
+
+        return _throw(new Error('Invalid username or password'));
     }
 
     /**

@@ -15,17 +15,8 @@ export class TokenInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         console.log(JSON.stringify(req));
         const started = Date.now();
-        let reqOptions = {},
-            headers,
-            token;
-        if (req.body.email && req.body.password) {
-            let password = this.globalApp.hassPassword(req.body.password);
+        let token = "12321321321321"; // example token , use service to authen and createToken when call api
 
-            headers = this.globalApp.getHeader(req.method, req.url, req.body.email, password, req.body);
-            token = req.body.email;
-        } else {
-
-        }
         req = req.clone({ headers: req.headers.set('Authorization', 'Bearer ' + token) });
 
         if (!req.headers.has('Content-Type')) {

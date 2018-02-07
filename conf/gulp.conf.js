@@ -35,7 +35,9 @@ exports.paths = {
     buildFontsFolder: '/fonts/',
     buildLibsFolder: '/libs/',
     buildJsFolder: '/js/',
-    buildAppFolder: '/app/'
+    buildAppFolder: '/app/',
+
+    urlencode: 'node_modules/urlencode/lib/urlencode.js'
 };
 
 exports.htmlmin = {
@@ -112,6 +114,7 @@ exports.configs = {
 exports.bundleJs = [
     this.configs.jquery,
     this.configs.bootstrapJs,
+    this.configs.stringFormat,
     this.configs.moment,
     this.configs.momentTimeZone,
     this.paths.src + this.paths.assetJsFile

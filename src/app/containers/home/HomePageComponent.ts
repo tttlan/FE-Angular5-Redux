@@ -1,6 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {BaseService} from "../../services/BaseService";
-import {HttpClient} from "@angular/common/http";
 
 @Component({
     moduleId: module.id,

@@ -1,13 +1,13 @@
 import { User } from '../models/UserModel';
 
 export interface Auth {
-    username: string;
+    email: string;
     password: string;
     rememberMe: boolean;
 }
 
 export const initialAuth: Auth = {
-    username: '',
+    email: '',
     password: '',
     rememberMe: false
 };
