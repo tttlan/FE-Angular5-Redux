@@ -9,16 +9,16 @@ const gulpDeploy = require('./gulp-tasks/gulp-deploy')();
 const gulpDefault = require('./gulp-tasks/gulp-default')();
 
 gulp.task('clean', gulpCommon.cleanTask);
-gulp.task('copy-views', gulpCommon.copyViewsWithoutMinifyTask);
+gulp.task('copy-views', gulpCommon.copyViewsTask);
 gulp.task('copy-images', gulpCommon.copyImagesTask);
 gulp.task('copy-fonts', gulpCommon.copyFontsTask);
-gulp.task('copy-index', gulpCommon.copyIndexWithoutMinifyTask);
-gulp.task('sass', gulpCommon.sassWithMapTask);
+gulp.task('copy-index', gulpCommon.copyIndexTask);
+gulp.task('sass', gulpCommon.sassTask);
 gulp.task('lint-fix', gulpCommon.lintFixTask);
 gulp.task('lint-watch', gulpCommon.lintWatchTask);
 gulp.task('del-config-file', gulpCommon.delConfigFileTask);
 gulp.task('make-config-file', gulpCommon.makeConfigFileTask);
-gulp.task('vendor-css', gulpCommon.vendorCssTaskWithMapTask);
+gulp.task('vendor-css', gulpCommon.vendorCssTask);
 gulp.task('copy-angular', gulpCommon.copyAngularTask);
 gulp.task('copy-corejs', gulpCommon.copyCorejsTask);
 gulp.task('copy-zonejs', gulpCommon.copyZonejsTask);
@@ -32,16 +32,18 @@ gulp.task('copy-respondjs', gulpCommon.copyRespondjsTask);
 gulp.task('copy-xdomainjs', gulpCommon.copyXdomainjsTask);
 gulp.task('copy-tslib', gulpCommon.copyTslibTask);
 gulp.task('copy-lodash', gulpCommon.copyLodashTask);
+gulp.task('copy-crypto', gulpCommon.copyCryptoTask);
+gulp.task('copy-string-format', gulpCommon.copyStringFormatTask);
 gulp.task('copy-ngrx-store-freeze', gulpCommon.copyNgrxStoreFreezeTask);
 gulp.task('copy-deep-freeze-strict', gulpCommon.copyDeepFreezeStrictTask);
 gulp.task('copy-hammerjs', gulpCommon.copyHammerjsTask);
-gulp.task('copy-ngrx', gulpCommon.copyNgRx);
+gulp.task('copy-ngrx', gulpCommon.copyNgRxTask);
 gulp.task('vendor-js', gulpCommon.vendorJsTask);
 gulp.task('bundle-js', gulpCommon.bundleJsTask);
 gulp.task('tslint', gulpCommon.tslintTask);
-gulp.task('compile-ts', ['make-config-file'], gulpCommon.compileTsWithMapTask);
+gulp.task('compile-ts', ['make-config-file'], gulpCommon.compileTsTask);
 gulp.task('watch', gulpCommon.watchTask);
-
+gulp.task('copy-urlencode', gulpCommon.browserifyFilesTask);
 
 /**
  * Gulp task for start server
@@ -63,11 +65,6 @@ gulp.task('default', gulpDefault.defaultTask);
 /**
  * Gulp task for build
  */
-gulp.task('compile-ts-build', gulpCommon.compileTsWithoutMapTask);
-gulp.task('sass-build', gulpCommon.sassWithoutMapTask);
-gulp.task('copy-views-build', gulpCommon.copyViewsWithMinifyTask);
-gulp.task('copy-index-build', gulpCommon.copyIndexWithMinifyTask);
-gulp.task('vendor-css-build', gulpCommon.vendorCssTaskWithoutMapTask);
 gulp.task('build', gulpBuild.buildTask);
 
 /**

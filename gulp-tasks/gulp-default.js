@@ -6,7 +6,7 @@ const conf = require('../conf/gulp.conf');
 
 module.exports = () => {
     return {
-        defaultTask: () => {
+        defaultTask: (cb) => {
             return runSequence(
                 'clean', [
                     'copy-fonts',
@@ -22,7 +22,7 @@ module.exports = () => {
                 ],
                 'server-dev-start',
                 'watch',
-                conf.errorHandler);
+                cb);
         }
     };
 };

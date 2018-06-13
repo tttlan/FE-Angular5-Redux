@@ -26,10 +26,6 @@
         "preserveWhitespaces": false
     },
     "compileOnSave": true,
-    "files": [
-        "src/**/*.ts",
-        "!node_modules/**"
-    ],
     "exclude": [
         "node_modules",
         "build"

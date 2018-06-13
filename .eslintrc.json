@@ -1,0 +1,41 @@
+{
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module"
+    },
+    "ecmaFeaturea": {
+        "classes": true
+    },
+    "rules": {
+        "no-duplicate-case": 2,
+        "no-dupe-keys": 2,
+        "no-empty": [
+            2,
+            {
+                "allowEmptyCatch": true
+            }
+        ],
+        "no-extra-semi": 2,
+        "no-undef": 2,
+        "space-before-blocks": 1,
+        "space-after-keywords": 1,
+        "space-before-function-paren": [
+            1,
+            {
+                "anonymous": "never",
+                "named": "never"
+            }
+        ],
+        "default-case": 2,
+        "no-multi-spaces": 1
+    },
+    "env": {
+        "browser": true,
+        "node": true,
+        "jasmine": true,
+        "jquery": true,
+        "commonjs": true,
+        "phantomjs": true
+    }
+}

@@ -2,8 +2,12 @@
 .tmp/
 test_out/
 dist/
+.idea/
 build/
 deploy/
+
+src/**/*.js
+src/**/*.js.map
 
 #dependencies
 node_modules/

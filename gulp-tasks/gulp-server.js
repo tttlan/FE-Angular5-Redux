@@ -22,14 +22,14 @@ module.exports = () => {
         prodServerTask: () => {
             SERVER_PROD.server(liteServer.PROD_SERVER);
         },
-        serverDevStartTask: () => {
-            return runSequence('dev-server', conf.serverCallBack);
+        serverDevStartTask: (cb) => {
+            return runSequence('dev-server', cb);
         },
-        serverTestStartTask: () => {
-            return runSequence('test-server', conf.serverCallBack);
+        serverTestStartTask: (cb) => {
+            return runSequence('test-server', cb);
         },
-        serverProdStartTask: () => {
-            return runSequence('prod-server', conf.serverCallBack);
+        serverProdStartTask: (cb) => {
+            return runSequence('prod-server', cb);
         }
     }
 };

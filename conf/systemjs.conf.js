@@ -14,7 +14,6 @@
             '@angular/platform-browser': 'npm:@angular/platform-browser/bundles/platform-browser.umd.js',
             '@angular/platform-browser/animations': 'npm:@angular/platform-browser/bundles/platform-browser-animations.umd.js',
             '@angular/platform-browser-dynamic': 'npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
-            // '@angular/http': 'npm:@angular/http/bundles/http.umd.js',
             '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
             '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
             '@angular/material': 'npm:@angular/material/bundles/material.umd.js',
@@ -42,11 +41,14 @@
             '@ngrx/store-devtools': 'npm:@ngrx/store-devtools/bundles/store-devtools.umd.js',
             '@ngrx/store-log-monitor': 'npm:@ngrx/store-log-monitor/bundles/store-log-monitor.umd.js',
             '@ngrx/router-store': 'npm:@ngrx/router-store/bundles/router-store.umd.js',
-            'deep-freeze-strict': 'npm:deep-freeze-strict',  
+            'deep-freeze-strict': 'npm:deep-freeze-strict',
             'ngrx-store-freeze': 'npm:ngrx-store-freeze',
             'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api/bundles/in-memory-web-api.umd.js',
             'tslib': 'npm:tslib.js',
-            'lodash': 'npm:lodash.js'
+            'lodash': 'npm:lodash.js',
+            'crypto-js': 'npm:cryptoJs/crypto-js.js',
+            'urlencode': 'npm:urlencode.js',
+            'string-format':'npm:string-format.js'
         },
         packages: {
             app: {

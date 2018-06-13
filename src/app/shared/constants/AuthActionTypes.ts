@@ -1,4 +1,4 @@
-import { type } from '../../utils/utils';
+import { type } from '../../utils/Utils';
 
 export const AuthActionTypes = {
     SIGN_IN: type('[auth] Sign In'),
