@@ -266,7 +266,7 @@ module.exports = () => {
                 // Start piping stream to tasks!
                 .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder));
         },
-        vendorJsTask: () => {
+        vendorJsTask: (cb) => {
             return runSequence(
                 'copy-system-conf-file',
                 'bundle-js', [
@@ -289,7 +289,7 @@ module.exports = () => {
                     'copy-string-format',
                     'copy-deep-freeze-strict'
                 ],
-                conf.errorHandler
+                cb
             );
         },
         tslintTask: () => {
@@ -305,31 +305,31 @@ module.exports = () => {
         compileTsTask: () => {
             tsCompile();
         },
-        watchTask: () => {
+        watchTask: (cb) => {
             plugins.livereload.listen();
 
             gulp.watch(conf.paths.src + conf.paths.assetImageAllFile, {
                 interval: OPTIONS.watchInterval
             }, () => {
-                runSequence('copy-images');
+                runSequence('copy-images', cb);
             });
 
             gulp.watch(conf.paths.src + conf.paths.assetFontsAllFile, {
                 interval: OPTIONS.watchInterval
             }, () => {
-                runSequence('copy-fonts');
+                runSequence('copy-fonts', cb);
             });
 
             gulp.watch(conf.paths.src + conf.paths.assetCssFile, {
                 interval: OPTIONS.watchInterval
             }, () => {
-                runSequence('vendor-css');
+                runSequence('vendor-css', cb);
             });
 
             gulp.watch(conf.paths.src + conf.paths.appScssFile, {
                 interval: OPTIONS.watchInterval
             }, () => {
-                runSequence('sass');
+                runSequence('sass', cb);
             });
 
             gulp.watch([
@@ -340,20 +340,21 @@ module.exports = () => {
                 }, () => {
                     runSequence(
                         'tslint',
-                        'compile-ts'
+                        'compile-ts',
+                        cb
                     );
                 });
 
             gulp.watch(conf.paths.src + conf.paths.appIndexFile, {
                 interval: OPTIONS.watchInterval
             }, () => {
-                runSequence('copy-index');
+                runSequence('copy-index', cb);
             });
 
             gulp.watch(conf.paths.src + conf.paths.appHtmlFile, {
                 interval: OPTIONS.watchInterval
             }, () => {
-                runSequence('copy-views');
+                runSequence('copy-views', cb);
             });
 
             gulp.watch(conf.paths.src + '/**/*', {
@@ -363,8 +364,6 @@ module.exports = () => {
                     plugins.livereload.changed(file);
                 }, 1000);
             });
-
-
         }
     }
 };

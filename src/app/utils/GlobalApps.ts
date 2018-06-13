@@ -1,6 +1,7 @@
 import { UIUtils } from './UIUtils';
 import * as CryptoJS from 'crypto-js';
 import * as urlencode from 'urlencode';
+import { StringUtils } from './StringUtils';
 
 export class GlobalApp {
     private _user: any = null;
@@ -8,6 +9,7 @@ export class GlobalApp {
     private _secretKey: string = 'qt';
     private _globalInfo: string = null;
     private _uiutils = new UIUtils();
+    private _stringUtils = new StringUtils();
 
 
     encryptValue(value: string): string {
@@ -189,7 +191,7 @@ export class GlobalApp {
         // Create a signature by Method (PUT) & URL Path & Timestamp & Nonce & Body
         function generateSignature() {
             let arrayPath = path.split('?');
-            let baseString = format('{0}&{1}&{2}&{3}&{4}', urlencode.encode(method), urlencode.encode(arrayPath[0]), urlencode.encode(timestamp), urlencode.encode(nonce), urlencode.encode(body));
+            let baseString = this._stringUtils.formatString('{0}&{1}&{2}&{3}&{4}', urlencode.encode(method), urlencode.encode(arrayPath[0]), urlencode.encode(timestamp), urlencode.encode(nonce), urlencode.encode(body));
             let key = token + "&" + secret;
             let sign = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA1(baseString, key));
 
