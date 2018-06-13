@@ -1,9 +1,9 @@
 {
-  "name": "mcare-project",
+  "name": "my-project",
   "version": "1.0.0",
   "license": "MIT",
   "author": "Lan Tran",
-  "description": "mCare project with Angular4",
+  "description": "my project with Angular 6 ",
   "private": true,
   "engines": {
     "node": ">= 6.9.0",
@@ -107,6 +107,6 @@
     "tslint": "^5.8.0",
     "typescript": "^2.6.1",
     "zipfolder": "^1.0.4",
-      "vinyl-source-stream": "1.1.0"
+    "vinyl-source-stream": "1.1.0"
   }
 }

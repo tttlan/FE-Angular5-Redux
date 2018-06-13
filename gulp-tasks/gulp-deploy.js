@@ -79,12 +79,12 @@ module.exports = () => {
                 }
             });
         },
-        deployTask: () => {
+        deployTask: (cb) => {
             return runSequence(
                 'clean',
                 // 'unit-tests',
                 'make-zip-folder',
-                conf.errorHandler);
+                cb);
         }
     }
 };

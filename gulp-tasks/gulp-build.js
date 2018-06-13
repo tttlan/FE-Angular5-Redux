@@ -6,7 +6,7 @@ const conf = require('../conf/gulp.conf');
 
 module.exports = () => {
     return {
-        buildTask: () => {
+        buildTask: (cb) => {
             return runSequence(
                 'clean', [
                     'copy-fonts',
@@ -21,7 +21,7 @@ module.exports = () => {
                     'tslint',
                     'compile-ts'
                 ],
-                conf.errorHandler);
+                cb);
         }
     };
 };
