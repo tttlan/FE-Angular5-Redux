@@ -48,7 +48,8 @@
             'lodash': 'npm:lodash.js',
             'crypto-js': 'npm:cryptoJs/crypto-js.js',
             'urlencode': 'npm:urlencode.js',
-            'string-format':'npm:string-format.js'
+            'string-format':'npm:string-format.js',
+            'rxjs/operators': 'npm:rxjs',
         },
         packages: {
             app: {
@@ -56,6 +57,10 @@
                 defaultExtension: 'js'
             },
             rxjs: {
+                defaultExtension: 'js'
+            },
+            'rxjs/operators': {
+                main: './index.js',
                 defaultExtension: 'js'
             },
             'angular2-in-memory-web-api': {

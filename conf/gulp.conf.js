@@ -35,9 +35,7 @@ exports.paths = {
     buildFontsFolder: '/fonts/',
     buildLibsFolder: '/libs/',
     buildJsFolder: '/js/',
-    buildAppFolder: '/app/',
-
-    urlencode: 'node_modules/urlencode/lib/urlencode.js'
+    buildAppFolder: '/app/'
 };
 
 exports.htmlmin = {
@@ -89,6 +87,7 @@ exports.configs = {
     reflectjs: './node_modules/reflect-metadata/Reflect.js',
     systemjs: './node_modules/systemjs/dist/system.src.js',
     rxjs: './node_modules/rxjs/**/*.js',
+    rxjsCompat: './node_modules/rxjs-compat/**/*.js',
     jasminejs: './node_modules/jasmine-core/lib/jasmine-core/*.*',
     systemConfigFile: './conf/systemjs.conf.js',
     respondjs: './node_modules/respond.js/src/respond.js',

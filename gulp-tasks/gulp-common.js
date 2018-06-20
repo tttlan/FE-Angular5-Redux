@@ -23,7 +23,7 @@ const browserify = require('browserify');
 const source = require('vinyl-source-stream');
 const conf = require('../conf/gulp.conf');
 const server = require('../conf/server.conf')();
-const tsProject = tsc.createProject('./tsconfig.json');
+const tsProject = tsc('./tsconfig.json');
 const gulpDefault = require('./gulp-default')();
 
 module.exports = () => {
@@ -51,19 +51,17 @@ module.exports = () => {
     var tsCompile = () => {
         OPTIONS.DO_SOURCEMAPS = process.env.NODE_ENV === 'dev' ? true : false;
 
-        let tsResult = gulp.src([
+        return gulp.src([
             conf.paths.src + '/**/*.ts'
         ])
             .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.init()))
-            .pipe(tsProject());
-
-        return tsResult.js
+            .pipe(tsProject)
             .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.write('.')))
             .pipe(gulp.dest(conf.paths.build + '/'));
     };
 
     var minifyHtml = () => {
-        // OPTIONS.DO_UGLIFY = process.env.NODE_ENV === 'dev' ? false : true; //need check
+        OPTIONS.DO_UGLIFY = process.env.NODE_ENV == 'dev' ? false : true;
 
         return gulp.src([
             conf.paths.src + conf.paths.appHtmlFile
@@ -73,7 +71,7 @@ module.exports = () => {
     };
 
     var minifyIndex = () => {
-        // OPTIONS.DO_UGLIFY = process.env.NODE_ENV === 'dev' ? false : true;
+        OPTIONS.DO_UGLIFY = process.env.NODE_ENV == 'dev' ? false : true;
 
         return gulp.src(conf.paths.src + conf.paths.appIndexFile)
             .pipe(plugins.if(OPTIONS.DO_UGLIFY, htmlmin(conf.htmlmin)))
@@ -168,6 +166,10 @@ module.exports = () => {
             return gulp.src(conf.configs.rxjs)
                 .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + 'rxjs/'));
         },
+        copyRxjsCompatTask: () => {
+            return gulp.src(conf.configs.rxjsCompat)
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + 'rxjs-compat/'));
+        },
         copyAngularWebApiTask: () => {
             return gulp.src(conf.configs.angularWebApi)
                 .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + 'angular2-in-memory-web-api/'));
@@ -257,7 +259,7 @@ module.exports = () => {
                 .pipe(gulp.dest(conf.paths.build + conf.paths.buildJsFolder));
         },
         browserifyFilesTask: function () {
-            var urlencode = conf.paths.urlencode;
+            var urlencode = conf.configs.urlencode;
 
             return browserify([urlencode], { standalone: "urlencode" })
                 .bundle()
@@ -272,6 +274,7 @@ module.exports = () => {
                 'bundle-js', [
                     'copy-angular',
                     'copy-rxjs',
+                    'copy-rxjs-compat',
                     'copy-angularWebApi',
                     'copy-ngrx',
                     'copy-ngrx-store-freeze',

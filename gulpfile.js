@@ -25,6 +25,7 @@ gulp.task('copy-zonejs', gulpCommon.copyZonejsTask);
 gulp.task('copy-reflectjs', gulpCommon.copyReflectjsTask);
 gulp.task('copy-systemjs', gulpCommon.copySystemjsTask);
 gulp.task('copy-rxjs', gulpCommon.copyRxjsTask);
+gulp.task('copy-rxjs-compat', gulpCommon.copyRxjsCompatTask);
 gulp.task('copy-angularWebApi', gulpCommon.copyAngularWebApiTask);
 gulp.task('copy-system-conf-file', gulpCommon.copySystemConfigFileTask);
 gulp.task('copy-app', gulpCommon.copyAppTask);
