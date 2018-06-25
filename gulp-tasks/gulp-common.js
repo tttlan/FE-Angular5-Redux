@@ -258,7 +258,7 @@ module.exports = () => {
                 .on('error', conf.errorHandler)
                 .pipe(gulp.dest(conf.paths.build + conf.paths.buildJsFolder));
         },
-        browserifyFilesTask: function () {
+        copyBrowserifyFilesTask: function () {
             var urlencode = conf.configs.urlencode;
 
             return browserify([urlencode], { standalone: "urlencode" })

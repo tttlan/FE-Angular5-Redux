@@ -44,7 +44,7 @@ gulp.task('bundle-js', gulpCommon.bundleJsTask);
 gulp.task('tslint', gulpCommon.tslintTask);
 gulp.task('compile-ts', ['make-config-file'], gulpCommon.compileTsTask);
 gulp.task('watch', gulpCommon.watchTask);
-gulp.task('copy-urlencode', gulpCommon.browserifyFilesTask);
+gulp.task('copy-urlencode', gulpCommon.copyBrowserifyFilesTask);
 
 /**
  * Gulp task for start server

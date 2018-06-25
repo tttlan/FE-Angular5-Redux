@@ -1,5 +1,6 @@
 (function (global) {
     System.config({
+        transpiler: 'typescript',
         paths: {
             'npm:': './libs/'
         },
@@ -33,7 +34,10 @@
             '@angular/cdk/overlay': 'npm:@angular/cdk/bundles/cdk-overlay.umd.js',
             '@angular/cdk/scrolling': 'npm:@angular/cdk/bundles/cdk-scrolling.umd.js',
             '@angular/cdk/stepper': 'npm:@angular/cdk/bundles/cdk-stepper.umd.js',
+            
+            // others library
             'rxjs': 'npm:rxjs',
+            'rxjs-compat': 'npm:rxjs-compat',
             'hammerjs': 'npm:hammerjs',
             '@ngrx/core': 'npm:@ngrx/core/bundles/core.umd.js',
             '@ngrx/store': 'npm:@ngrx/store/bundles/store.umd.js',
@@ -48,8 +52,7 @@
             'lodash': 'npm:lodash.js',
             'crypto-js': 'npm:cryptoJs/crypto-js.js',
             'urlencode': 'npm:urlencode.js',
-            'string-format':'npm:string-format.js',
-            'rxjs/operators': 'npm:rxjs',
+            'string-format': 'npm:string-format.js'
         },
         packages: {
             app: {
@@ -57,10 +60,15 @@
                 defaultExtension: 'js'
             },
             rxjs: {
+                main: 'index.js',
+                defaultExtension: 'js'
+            },
+            'rxjs-compat': {
+                main: './index.js',
                 defaultExtension: 'js'
             },
             'rxjs/operators': {
-                main: './index.js',
+                main: 'index.js',
                 defaultExtension: 'js'
             },
             'angular2-in-memory-web-api': {
