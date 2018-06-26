@@ -27,8 +27,7 @@ module.exports = () => {
                     })
                 ]
             },
-            debug: true,
-            open: true
+            debug: true
         },
         TEST_SERVER: {
             port: server.test_environment.port,

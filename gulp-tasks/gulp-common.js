@@ -314,25 +314,25 @@ module.exports = () => {
             gulp.watch(conf.paths.src + conf.paths.assetImageAllFile, {
                 interval: OPTIONS.watchInterval
             }, () => {
-                runSequence('copy-images', cb);
+                runSequence('copy-images');
             });
 
             gulp.watch(conf.paths.src + conf.paths.assetFontsAllFile, {
                 interval: OPTIONS.watchInterval
             }, () => {
-                runSequence('copy-fonts', cb);
+                runSequence('copy-fonts');
             });
 
             gulp.watch(conf.paths.src + conf.paths.assetCssFile, {
                 interval: OPTIONS.watchInterval
             }, () => {
-                runSequence('vendor-css', cb);
+                runSequence('vendor-css');
             });
 
             gulp.watch(conf.paths.src + conf.paths.appScssFile, {
                 interval: OPTIONS.watchInterval
             }, () => {
-                runSequence('sass', cb);
+                runSequence('sass');
             });
 
             gulp.watch([
@@ -351,13 +351,13 @@ module.exports = () => {
             gulp.watch(conf.paths.src + conf.paths.appIndexFile, {
                 interval: OPTIONS.watchInterval
             }, () => {
-                runSequence('copy-index', cb);
+                runSequence('copy-index');
             });
 
             gulp.watch(conf.paths.src + conf.paths.appHtmlFile, {
                 interval: OPTIONS.watchInterval
             }, () => {
-                runSequence('copy-views', cb);
+                runSequence('copy-views');
             });
 
             gulp.watch(conf.paths.src + '/**/*', {

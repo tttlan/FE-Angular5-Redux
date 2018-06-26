@@ -27,7 +27,7 @@ import {
 
 // import app component
 import { AppPageComponent } from './containers/app/AppPageComponent';
-import { TokenInterceptor } from "./utils/TokenInterceptor";
+// import { TokenInterceptor } from "./utils/TokenInterceptor";
 
 @NgModule({
     declarations: [
@@ -53,11 +53,11 @@ import { TokenInterceptor } from "./utils/TokenInterceptor";
             provide: RouterStateSerializer,
             useClass: CustomRouterStateSerializer
         },
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: TokenInterceptor,
-            multi: true
-        }
+        // {
+        //     provide: HTTP_INTERCEPTORS,
+        //     useClass: TokenInterceptor,
+        //     multi: true
+        // }
     ],
     bootstrap: [AppPageComponent]
 })
