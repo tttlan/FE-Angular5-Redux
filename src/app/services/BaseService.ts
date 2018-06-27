@@ -1,18 +1,20 @@
-import {Injectable} from "@angular/core";
-import {HTTP_VERBS} from "../shared/constants/HttpRequest";
-import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { HTTP_VERBS } from "../shared/constants/HttpRequest";
+import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import * as _ from "lodash";
-import {ApiHelpers} from "../utils/ApiHelpers";
-import {GlobalApp} from "../utils/GlobalApps";
+import { ApiHelpers } from "../utils/ApiHelpers";
+import { GlobalApp } from "../utils/GlobalApps";
+import { AppSettings } from '../shared/enums/AppSettings';
 
 @Injectable()
 export class BaseService {
-
+    baseUrl: string;
     private httpVerbs = HTTP_VERBS;
-    private baseUrl: string;
+    private apiHelper: ApiHelpers;
+    private http: HttpClient;
 
-    constructor(private http: HttpClient, private global: GlobalApp, private apiHelper: ApiHelpers) {
-        this.baseUrl = "http://localhost:5000";
+    constructor() {
+        this.baseUrl = AppSettings.SERVICE_URL;
     }
 
     get<T>(url: string, options: any = {}) {
@@ -22,16 +24,13 @@ export class BaseService {
         return this.async<T>(method, url, null, reqOptions);
     }
 
-    post<T>(url: any, options: any = {}) {
+    post<T>(data: any = {}) {
         let method = this.httpVerbs.POST,
             reqOptions,
             body = {};
-        body["data"] = options.data;
-        body["items"] = options.items;
-        body["meta"] = {
-            "type": options.meta
-        };
-        options.body = _.cloneDeep(body);
+
+        body["data"] = data;
+
         try {
             body = JSON.stringify(body, (key, value) => {
                 if (value === undefined) {
@@ -44,8 +43,8 @@ export class BaseService {
         }
 
         reqOptions = this.getOptions();
-        url = this.getUrl(url, options);
-        return this.async<T>(method, url, body, reqOptions);
+
+        return this.async<T>(this.httpVerbs.POST, this.baseUrl, body, reqOptions);
     }
 
 

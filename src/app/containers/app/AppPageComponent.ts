@@ -1,8 +1,8 @@
-import {Component, ChangeDetectionStrategy, OnInit} from '@angular/core';
-import {Store} from "@ngrx/store";
-import {AuthStore} from "../../models/AuthModel";
+import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Store } from "@ngrx/store";
+import { AuthStore } from "../../models/AuthModel";
 import * as fromAuthReducers from '../../reducers/auth/index';
-import {Observable} from "rxjs/Observable";
+import { Observable } from "rxjs/Observable";
 
 @Component({
     moduleId: module.id,
@@ -11,7 +11,7 @@ import {Observable} from "rxjs/Observable";
     templateUrl: './AppPageView.html'
 })
 
-export class AppPageComponent   {
+export class AppPageComponent {
     loggedIn$: Observable<boolean>;
 
     constructor(private store: Store<AuthStore>) {

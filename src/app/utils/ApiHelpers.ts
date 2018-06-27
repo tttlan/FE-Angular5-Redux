@@ -1,13 +1,9 @@
-
-
 export class ApiHelpers {
-
     constructor() {
 
     }
 
-
-    buildQueryString(url: any, options: any) {
+    buildQueryString(url: any, options: any): string {
         if (options && options.query) {
             for (let key in options.query) {
                 if (options.query[key]) {
@@ -18,8 +14,7 @@ export class ApiHelpers {
         return url;
     }
 
-
-    updateQueryStringParameter(url: any, key: any, value: any) {
+    updateQueryStringParameter(url: any, key: any, value: any): string {
         let regex = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
         let separator = url.indexOf("?") !== -1 ? "&" : "?";
         if (url.match(regex)) {
@@ -28,5 +23,4 @@ export class ApiHelpers {
             return url + separator + key + "=" + value;
         }
     }
-
 }

@@ -1,10 +1,9 @@
 import {
     ActionReducerMap,
     ActionReducer,
-    MetaReducer,
-    createFeatureSelector,
-    createSelector
+    MetaReducer
 } from '@ngrx/store';
+
 import { AppSettings } from '../shared/enums/AppSettings';
 import { RouterStateUrl } from '../utils/Utils';
 import * as fromRouter from '@ngrx/router-store';
