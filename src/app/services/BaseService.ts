@@ -1,18 +1,26 @@
-import {Injectable} from "@angular/core";
-import {HTTP_VERBS} from "../shared/constants/HttpRequest";
-import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { HTTP_VERBS } from "../shared/constants/HttpRequest";
+import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import * as _ from "lodash";
-import {ApiHelpers} from "../utils/ApiHelpers";
-import {GlobalApp} from "../utils/GlobalApps";
+import { ApiHelpers } from "../utils/ApiHelpers";
+import { GlobalApp } from "../utils/GlobalApps";
+import { AppSettings } from '../shared/enums/AppSettings';
 
 @Injectable()
 export class BaseService {
+    baseUrl;
+    private httpVerbs;
+    private apiHelper;
 
-    private httpVerbs = HTTP_VERBS;
-    private baseUrl: string;
+    constructor(private http: HttpClient) {
+        this.baseUrl = AppSettings.SERVICE_URL;
 
-    constructor(private http: HttpClient, private global: GlobalApp, private apiHelper: ApiHelpers) {
-        this.baseUrl = "http://localhost:5000";
+        this.init();
+    }
+
+    init() {
+        this.httpVerbs = HTTP_VERBS;
+        this.apiHelper = ApiHelpers;
     }
 
     get<T>(url: string, options: any = {}) {
@@ -22,16 +30,13 @@ export class BaseService {
         return this.async<T>(method, url, null, reqOptions);
     }
 
-    post<T>(url: any, options: any = {}) {
+    post<T>(data: any = {}) {
         let method = this.httpVerbs.POST,
             reqOptions,
             body = {};
-        body["data"] = options.data;
-        body["items"] = options.items;
-        body["meta"] = {
-            "type": options.meta
-        };
-        options.body = _.cloneDeep(body);
+
+        body["data"] = data;
+
         try {
             body = JSON.stringify(body, (key, value) => {
                 if (value === undefined) {
@@ -44,8 +49,8 @@ export class BaseService {
         }
 
         reqOptions = this.getOptions();
-        url = this.getUrl(url, options);
-        return this.async<T>(method, url, body, reqOptions);
+
+        return this.async<T>(method, this.baseUrl, body, reqOptions);
     }
 
 
@@ -115,29 +120,27 @@ export class BaseService {
         return this.baseUrl + url;
     }
 
-    async<T>(method: any, url: any, body: any, reqOptions: any) {
-        return new Promise((resolve, reject) => {
-            this.http[_.lowerCase(method)](
-                url,
-                (method === HTTP_VERBS.POST) || (method === HTTP_VERBS.PUT) ? body : reqOptions,
-                (method === HTTP_VERBS.POST) || (method === HTTP_VERBS.PUT) ? reqOptions : null
-            ).subscribe(
-                (res: any) => {
-                    let data;
+    async<T>(method: string, url: string, body: any, reqOptions: any) {        
+        return this.http[_.lowerCase(method)](
+            url,
+            (method === HTTP_VERBS.POST) || (method === HTTP_VERBS.PUT) ? body : reqOptions,
+            (method === HTTP_VERBS.POST) || (method === HTTP_VERBS.PUT) ? reqOptions : null
+        ).subscribe(
+            (res: any) => {
+                let data;
 
-                    try {
-                        data = JSON.parse(res._body);
-                        resolve(data);
-                    } catch (err) {
-                        resolve(res);
-                    }
-                }, (err: HttpErrorResponse) => {
-                    if (err.error instanceof ErrorEvent) {
-                        console.log(err.error.message);
-                    } else {
-                        console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
-                    }
-                });
-        });
+                try {
+                    data = JSON.parse(res._body);
+                    return data;
+                } catch (err) {
+                    return res;
+                }
+            }, (err: HttpErrorResponse) => {
+                if (err.error instanceof ErrorEvent) {
+                    console.log(err.error.message);
+                } else {
+                    console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
+                }
+            });
     }
 }

@@ -1,38 +1,32 @@
 import { Injectable } from '@angular/core';
-import { initialUser } from '../models/UserModel';
+import { Observable } from 'rxjs/Observable';
+import { initialUser, User } from '../models/UserModel';
 import { Auth } from '../models/AuthModel';
-import {BaseService} from "./BaseService";
-import {BehaviorSubject} from "rxjs/BehaviorSubject";
-import {_throw} from "rxjs/observable/throw";
-import {of} from "rxjs/observable/of";
-export const MOCK_USER = initialUser;
-@Injectable()
-export class AuthService {
+import { BaseService } from "./BaseService";
+import { BehaviorSubject, of, throwError } from "rxjs";
+import { HttpClient } from '@angular/common/http';
 
+export const MOCK_USER = initialUser;
+
+
+@Injectable()
+export class AuthService extends BaseService {
     isLogin = new BehaviorSubject<boolean>(false);
     user = new BehaviorSubject<{}>(null);
 
+    constructor(http) {
+        super(http);
 
-    constructor(private http: BaseService) {
-
+        this.baseUrl = this.baseUrl + '/login';
     }
 
-    signIn(auth: Auth): any {
-        // let url = "http://localhost:5000/users/login",
-        //     options = {
-        //         data: {
-        //             email: email,
-        //             password: password
-        //         }
-        //     };
+    signIn(auth: Auth): Observable<User> {
+        // if (auth.email === MOCK_USER.email && auth.password === MOCK_USER.password) {
+        //     return of(MOCK_USER);
+        // }
 
-        // return this.http.post<Auth>(url, options);
-
-        if (auth.email === MOCK_USER.email && auth.password === MOCK_USER.password) {
-            return of(MOCK_USER);
-        }
-
-        return _throw(new Error('Invalid username or password'));
+        // return throwError(new Error('Invalid username or password'));
+        return this.post<Auth>(auth);
     }
 
     /**

@@ -1,6 +1,3 @@
-// import ui util
-import { UIUtils } from '../../utils/UIUtils';
-
 // import auth actions
 import { Actions } from '../../actions/AuthAction';
 
@@ -9,8 +6,6 @@ import { AuthActionTypes } from '../../shared/constants/AuthActionTypes';
 
 // import models
 import { Auth, AuthStore, initialState } from '../../models/AuthModel';
-import { User } from '../../models/UserModel';
-
 
 export interface AuthState {
     auth: AuthStore;

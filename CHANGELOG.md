@@ -5,6 +5,10 @@
 | Package name | Old version | New version |
 | :--- | :---: | :---: |
 | @angular/ [animations/common/compiler/core/forms/http/platform-browser/platform-browser-dynamic/router]   | 5.2.1 | 6.0.5 |
+| @ngrx/effects | 4.1.1 | 6.0.1 |
+| @ngrx/router-store | 4.1.1 | 6.0.1 |
+| @ngrx/store | 4.1.1 | 6.0.1 |
+| @ngrx/store-devtools | 4.1.1 | 6.0.1 |
 
 
 # 3-11-2017
