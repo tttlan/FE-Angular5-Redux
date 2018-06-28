@@ -14,7 +14,7 @@ export class AuthService extends BaseService {
     isLogin = new BehaviorSubject<boolean>(false);
     user = new BehaviorSubject<{}>(null);
 
-    constructor(http) {
+    constructor(http: HttpClient) {
         super(http);
 
         this.baseUrl = this.baseUrl + '/login';

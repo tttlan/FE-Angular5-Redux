@@ -14,7 +14,6 @@ export class BaseService {
 
     constructor(private http: HttpClient) {
         this.baseUrl = AppSettings.SERVICE_URL;
-
         this.init();
     }
 
