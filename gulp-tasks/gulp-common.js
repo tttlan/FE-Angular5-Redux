@@ -7,12 +7,10 @@ const paths = require('path');
 const sass = require('gulp-sass');
 const eslint = require('gulp-eslint');
 const htmlmin = require('gulp-htmlmin');
-const createFile = require('create-file');
 const b2v = require('buffer-to-vinyl');
 const gulpTsConfig = require('gulp-ts-config');
 const imagemin = require('gulp-imagemin');
 const cleanCSS = require('gulp-clean-css');
-const typescript = require('gulp-typescript');
 const tslint = require('gulp-tslint');
 const tsc = require('gulp-typescript');
 const runSequence = require('run-sequence').use(gulp);
@@ -23,8 +21,7 @@ const browserify = require('browserify');
 const source = require('vinyl-source-stream');
 const conf = require('../conf/gulp.conf');
 const server = require('../conf/server.conf')();
-const tsProject = tsc('./tsconfig.json');
-const gulpDefault = require('./gulp-default')();
+const tsProject = tsc.createProject('./tsconfig.json');
 
 module.exports = () => {
     let OPTIONS = {
@@ -55,7 +52,7 @@ module.exports = () => {
             conf.paths.src + '/**/*.ts'
         ])
             .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.init()))
-            .pipe(tsProject)
+            .pipe(tsProject())
             .pipe(plugins.if(OPTIONS.DO_SOURCEMAPS, plugins.sourcemaps.write('.')))
             .pipe(gulp.dest(conf.paths.build + '/'));
     };
@@ -133,7 +130,7 @@ module.exports = () => {
         makeConfigFileTask: () => {
             let json = JSON.stringify({});
 
-            return b2v.stream(new Buffer(json), 'AppSettings.js')
+            return b2v.stream(new Buffer.from(json), 'AppSettings.js')
                 .pipe(gulpTsConfig('AppSettings', {
                     createModule: false,
                     constants: {
@@ -314,25 +311,25 @@ module.exports = () => {
             gulp.watch(conf.paths.src + conf.paths.assetImageAllFile, {
                 interval: OPTIONS.watchInterval
             }, () => {
-                runSequence('copy-images', cb);
+                runSequence('copy-images');
             });
 
             gulp.watch(conf.paths.src + conf.paths.assetFontsAllFile, {
                 interval: OPTIONS.watchInterval
             }, () => {
-                runSequence('copy-fonts', cb);
+                runSequence('copy-fonts');
             });
 
             gulp.watch(conf.paths.src + conf.paths.assetCssFile, {
                 interval: OPTIONS.watchInterval
             }, () => {
-                runSequence('vendor-css', cb);
+                runSequence('vendor-css');
             });
 
             gulp.watch(conf.paths.src + conf.paths.appScssFile, {
                 interval: OPTIONS.watchInterval
             }, () => {
-                runSequence('sass', cb);
+                runSequence('sass');
             });
 
             gulp.watch([
@@ -343,21 +340,20 @@ module.exports = () => {
                 }, () => {
                     runSequence(
                         'tslint',
-                        'compile-ts',
-                        cb
+                        'compile-ts'
                     );
                 });
 
             gulp.watch(conf.paths.src + conf.paths.appIndexFile, {
                 interval: OPTIONS.watchInterval
             }, () => {
-                runSequence('copy-index', cb);
+                runSequence('copy-index');
             });
 
             gulp.watch(conf.paths.src + conf.paths.appHtmlFile, {
                 interval: OPTIONS.watchInterval
             }, () => {
-                runSequence('copy-views', cb);
+                runSequence('copy-views');
             });
 
             gulp.watch(conf.paths.src + '/**/*', {
