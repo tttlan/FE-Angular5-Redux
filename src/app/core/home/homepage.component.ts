@@ -4,11 +4,11 @@ import {BaseService} from "../../services/BaseService";
 @Component({
     moduleId: module.id,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    selector: 'home',
-    templateUrl: './HomePageView.html'
+    selector: 'app-homepage',
+    templateUrl: './homepage.component.html'
 })
 
-export class HomeComponent implements OnInit {
+export class HomePageComponent implements OnInit {
 
     constructor(private http: BaseService) {
 

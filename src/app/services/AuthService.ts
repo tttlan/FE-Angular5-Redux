@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { initialUser } from '../models/UserModel';
-import { Auth } from '../models/AuthModel';
 import {BaseService} from "./BaseService";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {_throw} from "rxjs/observable/throw";
 import {of} from "rxjs/observable/of";
+import { Auth } from '../models/AuthModel';
 export const MOCK_USER = initialUser;
 @Injectable()
 export class AuthService {

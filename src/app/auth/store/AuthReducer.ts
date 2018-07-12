@@ -2,7 +2,7 @@
 import { UIUtils } from '../../utils/UIUtils';
 
 // import auth actions
-import { Actions } from '../../actions/AuthAction';
+import { Actions } from '../../auth/store/AuthAction';
 
 // import auth action type
 import { AuthActionTypes } from '../../shared/constants/AuthActionTypes';

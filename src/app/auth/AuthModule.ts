@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import * as fromAngularForms from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { CoreModule } from './CoreModule';
 import { AuthService } from '../services/AuthService';
-import { reducers } from '../reducers/auth/index';
-import { AuthEffects } from '../effects/AuthEffect';
+import { AuthEffects } from './store/AuthEffect';
 import { AuthRoutingModule } from './AuthRoutingModule';
-import { SignInPageComponent } from '../containers/auth/SignInPageComponent';
-import { LoginFormComponent } from '../components/auth/LoginFormComponent';
+import { SignInPageComponent } from './signin/SignInPageComponent';
+import { LoginFormComponent } from './signin/login-form/LoginFormComponent';
+import { CoreModule } from '../core/CoreModule';
+import { reducers } from './store/index';
 
 const COMPONENTS = [
     SignInPageComponent,

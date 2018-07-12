@@ -4,8 +4,8 @@ import { Observable } from 'rxjs/Observable';
 
 import { Auth, initialAuth, AuthStore } from '../../models/AuthModel';
 import RS from '../../shared/resources/ResourceManager';
-import * as fromAuthActions from '../../actions/AuthAction';
-import * as fromAuthReducers from '../../reducers/auth/index';
+import * as fromAuthActions from '../store/AuthAction';
+import * as fromAuthReducers from '../store/index';
 
 @Component({
     moduleId: module.id,

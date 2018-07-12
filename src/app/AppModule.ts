@@ -11,7 +11,7 @@ import {
 } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { reducers, metaReducers } from './reducers/CoreReducer';
+import { reducers, metaReducers } from './auth/store/CoreReducer';
 import { CustomRouterStateSerializer } from './utils/Utils';
 
 // import settings
@@ -19,14 +19,12 @@ import { AppSettings } from './shared/enums/AppSettings';
 
 // import new module
 import { AppRoutingModule } from './AppRoutingModule';
-import {
-    CoreModule,
-    AuthModule,
-    HomeModule
-} from './modules/index';
 
 // import app component
-import { AppPageComponent } from './containers/app/AppPageComponent';
+import { AppPageComponent } from './AppPageComponent';
+import { CoreModule } from './core/CoreModule';
+import { AuthModule } from './auth/AuthModule';
+
 // import { TokenInterceptor } from "./utils/TokenInterceptor";
 
 @NgModule({
@@ -45,8 +43,7 @@ import { AppPageComponent } from './containers/app/AppPageComponent';
 
         AppRoutingModule,
         CoreModule.forRoot(),
-        AuthModule.forRoot(),
-        HomeModule.forRoot()
+        AuthModule.forRoot()
     ],
     providers: [
         {

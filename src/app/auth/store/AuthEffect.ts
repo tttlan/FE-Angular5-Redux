@@ -9,10 +9,10 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/exhaustMap';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/take';
-import { User } from '../models/UserModel';
-import { AuthService } from '../services/AuthService';
-import { AuthActionTypes } from '../shared/constants/AuthActionTypes';
-import * as fromAuthActions from '../actions/AuthAction';
+import { User } from '../../models/UserModel';
+import { AuthService } from '../../services/AuthService';
+import { AuthActionTypes } from '../../shared/constants/AuthActionTypes';
+import * as fromAuthActions from './AuthAction';
 
 // import auth action
 import {
@@ -20,7 +20,7 @@ import {
     SingInSuccessAction,
     SignInErrorAction,
     SignInRedirectAction
-} from '../actions/AuthAction';
+} from './AuthAction';
 
 @Injectable()
 export class AuthEffects {

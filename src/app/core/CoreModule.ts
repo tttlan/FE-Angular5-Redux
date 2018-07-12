@@ -3,19 +3,17 @@ import * as fromAngularForms from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-// import core containers
-import { NotFoundPageComponent } from '../containers/not-found/NotFoundPageComponent';
-
 // import core components
 import { ShowErrorsComponent } from '../components/ShowErrorsComponent';
 import { LayoutComponent } from '../components/LayoutComponent';
+import { NotFoundPageComponent } from '../components/not-found/NotFoundPageComponent';
 
 // import core directives
 import { InputPatternValidatorDirective } from '../shared/directives/InputPatternValidatorDirective';
 import { PassWordPatternValidatorDirective } from '../shared/directives/PasswordValidatorDirective';
 
 // import another modules
-import { CustomMaterialModule } from '../modules/MaterialModule';
+import { CustomMaterialModule } from './MaterialModule';
 
 import { BaseService } from "../services/BaseService";
 import { ApiHelpers } from "../utils/ApiHelpers";

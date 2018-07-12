@@ -1,17 +1,19 @@
 import {Component, ChangeDetectionStrategy, OnInit} from '@angular/core';
-import {Store} from "@ngrx/store";
-import {AuthStore} from "../../models/AuthModel";
-import * as fromAuthReducers from '../../reducers/auth/index';
 import {Observable} from "rxjs/Observable";
+import {Store} from "@ngrx/store";
+
+import * as fromAuthReducers from '../../auth/store/AuthReducer';
+import * as AuthAction from '../../auth/store/AuthAction';
+import { AuthStore } from '../../models/AuthModel';
 
 @Component({
     moduleId: module.id,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    selector: 'app',
-    templateUrl: './AppPageView.html'
+    selector: 'app-header',
+    templateUrl: './header.component.html'
 })
 
-export class AppPageComponent   {
+export class HeaderComponent   {
     loggedIn$: Observable<boolean>;
 
     constructor(private store: Store<AuthStore>) {
@@ -19,5 +21,9 @@ export class AppPageComponent   {
     }
 
     ngOnInit() {
+    }
+
+    onLogout() {
+        this.store.dispatch(new AuthAction.SignOutAction());
     }
 }
