@@ -10,6 +10,6 @@ export const initialUser: User = {
     _id: 1,
     username: 'admin',
     password: '1',
-    email: 'nnchau@tma.com.vn',
+    email: 'sa',
     phone: '0123-456-789'
 };

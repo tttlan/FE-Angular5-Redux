@@ -44,8 +44,8 @@ import { AuthService } from './services/AuthService';
         EffectsModule.forRoot([]),
 
         AppRoutingModule,
-        AuthModule.forRoot(),
         CoreModule.forRoot(),
+        AuthModule.forRoot(),
     ],
     providers: [
         {

@@ -5,6 +5,8 @@ import {
 import { Observable } from "rxjs/Observable";
 import { Injectable } from "@angular/core";
 import { GlobalApp } from "./GlobalApps";
+import { tap } from 'rxjs/operators';
+
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -28,7 +30,7 @@ export class TokenInterceptor implements HttpInterceptor {
             headers: req.headers.set('Accept', 'application/json')
         });
         return next.handle(req)
-            .do((event: HttpEvent<any>) => {
+            .pipe(tap((event: HttpEvent<any>) => {
                 if (event instanceof HttpResponse) {
                     const elapsed = Date.now() - started;
                     console.log("Date :", new Date().toDateString());
@@ -41,7 +43,7 @@ export class TokenInterceptor implements HttpInterceptor {
                         //remove the token from the localStorage
                     }
                 }
-            });
+            }));
     }
 
 

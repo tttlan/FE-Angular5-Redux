@@ -1,8 +1,8 @@
 import {Component, ChangeDetectionStrategy, OnInit} from '@angular/core';
 import {Store} from "@ngrx/store";
+import {Observable} from "rxjs/Observable";
 
 import * as fromAuthReducers from './auth/store/index';
-import {Observable} from "rxjs/Observable";
 import { AuthStore } from './models/AuthModel';
 
 @Component({
