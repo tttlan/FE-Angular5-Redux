@@ -8,6 +8,7 @@ export default {
     LOGIN_LABEL_SIGN_IN: 'Sign in',
     LOGIN_PLACEHOLDER_USERNAME: 'Username',
     LOGIN_PLACEHOLDER_PW: 'Password',
+    REGISTER_LABEL: 'Register Now',
 
     MSG_ERROR_REQUIRED: 'This field is required',
     MSG_ERROR_MIN_LENGTH: 'The min number of charaters is {0}',

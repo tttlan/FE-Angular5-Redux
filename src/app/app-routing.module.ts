@@ -5,6 +5,7 @@ import { AuthGuardService } from './services/AuthGuardService';
 import { NotFoundPageComponent } from './components/not-found/NotFoundPageComponent';
 import { SigninComponent } from './auth/signin/signin.component';
 import { HomePageComponent } from './core/home/homepage.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 const routes: Routes = [
     {
@@ -16,6 +17,10 @@ const routes: Routes = [
     {
         path: 'sign-in',
         component: SigninComponent
+    },
+    {
+        path: 'sign-up',
+        component: SignupComponent
     },
     // {
     //     path: '404',
@@ -32,7 +37,7 @@ const routes: Routes = [
     // },
     {
         path: '**',
-        redirectTo: '/404'
+        component: NotFoundPageComponent
     }
 ];
 

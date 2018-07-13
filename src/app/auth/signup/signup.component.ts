@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
+import { NgForm } from '../../../../node_modules/@angular/forms';
 
 import { Auth, initialAuth, AuthStore } from '../../models/AuthModel';
 import RS from '../../shared/resources/ResourceManager';
@@ -9,11 +10,11 @@ import * as fromAuthReducers from '../store/index';
 
 @Component({
     moduleId: module.id,
-    selector: 'app-signin',
-    templateUrl: './signin.component.html'
+    selector: 'app-signup',
+    templateUrl: './signup.component.html'
 })
 
-export class SigninComponent implements OnInit {
+export class SignupComponent implements OnInit {
     resource: any;
     auth: Auth;
     error$: Observable<any>;
@@ -24,11 +25,10 @@ export class SigninComponent implements OnInit {
     ngOnInit() {
         this.resource = RS;
         this.auth = initialAuth;
-        this.error$ = this.store.select(fromAuthReducers.getSignInError);
-        this.loading$ = this.store.select(fromAuthReducers.getSignInLoading);
     }
 
-    onSubmit($event: Auth) {
-        this.store.dispatch(new fromAuthActions.SignInAction($event));
+    onSignup(form: NgForm) {
+        this.auth.email = form.value.email;
+        this.auth.password = form.value.password;
     }
 }

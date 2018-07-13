@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import * as fromAngularForms from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+
 import { AuthService } from '../services/AuthService';
 import { AuthEffects } from './store/auth.effects';
 import { AuthRoutingModule } from './auth-routing.module';
@@ -10,10 +11,12 @@ import { SigninComponent } from './signin/signin.component';
 import { LoginFormComponent } from './signin/login-form/login-form.component';
 import { reducers } from './store/index';
 import { CoreModule } from '../core/core.module';
+import { SignupComponent } from './signup/signup.component';
 
 const COMPONENTS = [
     SigninComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    SignupComponent
 ];
 
 @NgModule({
