@@ -3,12 +3,19 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AuthGuardService } from './services/AuthGuardService';
 import { NotFoundPageComponent } from './components/not-found/NotFoundPageComponent';
-import { SignInPageComponent } from './auth/signin/SignInPageComponent';
+import { SigninComponent } from './auth/signin/signin.component';
+import { HomePageComponent } from './core/home/homepage.component';
 
 const routes: Routes = [
     {
+        path: '',
+        // loadChildren: 'app/modules/HomeModule#HomeModule',
+        component: HomePageComponent,
+        canActivate: [AuthGuardService],
+    },
+    {
         path: 'sign-in',
-        component: SignInPageComponent
+        component: SigninComponent
     },
     // {
     //     path: '404',
@@ -23,19 +30,23 @@ const routes: Routes = [
     //     loadChildren: 'app/modules/HomeModule#HomeModule',
     //     // canActivate: [AuthGuardService],
     // },
-    // {
-    //     path: '**',
-    //     redirectTo: '/404'
-    // }
+    {
+        path: '**',
+        redirectTo: '/404'
+    }
 ];
 
 @NgModule({
-    exports: [
-        RouterModule
-    ],
     imports: [
         RouterModule.forRoot(routes, { useHash: false })
+    ],
+    providers: [
+        AuthGuardService
+    ],
+    exports: [
+        RouterModule
     ]
+
 })
 
 export class AppRoutingModule { }

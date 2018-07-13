@@ -3,7 +3,6 @@ import {BaseService} from "../../services/BaseService";
 
 @Component({
     moduleId: module.id,
-    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-homepage',
     templateUrl: './homepage.component.html'
 })

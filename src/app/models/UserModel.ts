@@ -9,7 +9,7 @@ export interface User {
 export const initialUser: User = {
     _id: 1,
     username: 'admin',
-    password: '12345678x@X',
-    email: 'tttlan@tma.com.vn',
+    password: '1',
+    email: 'nnchau@tma.com.vn',
     phone: '0123-456-789'
 };

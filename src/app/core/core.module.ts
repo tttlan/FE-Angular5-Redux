@@ -13,13 +13,17 @@ import { InputPatternValidatorDirective } from '../shared/directives/InputPatter
 import { PassWordPatternValidatorDirective } from '../shared/directives/PasswordValidatorDirective';
 
 // import another modules
-import { CustomMaterialModule } from './MaterialModule';
+import { CustomMaterialModule } from './material.module';
 
 import { BaseService } from "../services/BaseService";
 import { ApiHelpers } from "../utils/ApiHelpers";
 import { GlobalApp } from "../utils/GlobalApps";
+import { HeaderComponent } from './header/header.component';
+import { HomePageComponent } from './home/homepage.component';
 
 const CORE_COMPONENTS = [
+    HeaderComponent,
+    HomePageComponent,
     ShowErrorsComponent,
     LayoutComponent,
     NotFoundPageComponent,

@@ -4,15 +4,15 @@ import * as fromAngularForms from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthService } from '../services/AuthService';
-import { AuthEffects } from './store/AuthEffect';
-import { AuthRoutingModule } from './AuthRoutingModule';
-import { SignInPageComponent } from './signin/SignInPageComponent';
-import { LoginFormComponent } from './signin/login-form/LoginFormComponent';
-import { CoreModule } from '../core/CoreModule';
+import { AuthEffects } from './store/auth.effects';
+import { AuthRoutingModule } from './auth-routing.module';
+import { SigninComponent } from './signin/signin.component';
+import { LoginFormComponent } from './signin/login-form/login-form.component';
 import { reducers } from './store/index';
+import { CoreModule } from '../core/core.module';
 
 const COMPONENTS = [
-    SignInPageComponent,
+    SigninComponent,
     LoginFormComponent
 ];
 
@@ -23,11 +23,13 @@ const COMPONENTS = [
         fromAngularForms.FormsModule,
         fromAngularForms.ReactiveFormsModule,
         AuthRoutingModule,
-        CoreModule.forRoot(),
+        CoreModule,
         StoreModule.forFeature('auth', reducers),
         EffectsModule.forFeature([AuthEffects])
+
     ],
-    declarations: COMPONENTS
+    declarations: COMPONENTS,
+    // providers: [AuthService]
 })
 export class AuthModule {
     static forRoot(): ModuleWithProviders {

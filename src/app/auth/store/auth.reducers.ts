@@ -2,7 +2,7 @@
 import { UIUtils } from '../../utils/UIUtils';
 
 // import auth actions
-import { Actions } from '../../auth/store/AuthAction';
+import { Actions } from '../../auth/store/auth.actions';
 
 // import auth action type
 import { AuthActionTypes } from '../../shared/constants/AuthActionTypes';
@@ -50,7 +50,21 @@ export function reducer(state: any = initialState, action: Actions): AuthStore {
                 loading: false
             };
         }
-
+        case AuthActionTypes.SIGN_OUT: {
+            return {
+                ...state,
+                error: null,
+                loading: true
+            };
+        }
+        case AuthActionTypes.SIGN_OUT_SUCCESS: {
+            return {
+                ...state,
+                loggedIn: false,
+                error: null,
+                loading: false
+            };
+        }
         default: {
             return state;
         }

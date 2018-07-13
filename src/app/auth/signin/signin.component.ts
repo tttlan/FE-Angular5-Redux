@@ -4,17 +4,16 @@ import { Observable } from 'rxjs/Observable';
 
 import { Auth, initialAuth, AuthStore } from '../../models/AuthModel';
 import RS from '../../shared/resources/ResourceManager';
-import * as fromAuthActions from '../store/AuthAction';
+import * as fromAuthActions from '../store/auth.actions';
 import * as fromAuthReducers from '../store/index';
 
 @Component({
     moduleId: module.id,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    selector: 'sign-in',
-    templateUrl: './SignInPageView.html'
+    selector: 'app-signin',
+    templateUrl: './signin.component.html'
 })
 
-export class SignInPageComponent implements OnInit {
+export class SigninComponent implements OnInit {
     resource: any;
     auth: Auth;
     error$: Observable<any>;

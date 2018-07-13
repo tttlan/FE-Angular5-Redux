@@ -7,12 +7,11 @@ import { AuthStore } from './models/AuthModel';
 
 @Component({
     moduleId: module.id,
-    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app',
-    templateUrl: './AppPageView.html'
+    templateUrl: './app.component.html'
 })
 
-export class AppPageComponent   {
+export class AppComponent   {
     loggedIn$: Observable<boolean>;
 
     constructor(private store: Store<AuthStore>) {

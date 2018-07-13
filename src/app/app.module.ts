@@ -18,18 +18,20 @@ import { CustomRouterStateSerializer } from './utils/Utils';
 import { AppSettings } from './shared/enums/AppSettings';
 
 // import new module
-import { AppRoutingModule } from './AppRoutingModule';
+import { AppRoutingModule } from './app-routing.module';
 
 // import app component
-import { AppPageComponent } from './AppPageComponent';
-import { CoreModule } from './core/CoreModule';
-import { AuthModule } from './auth/AuthModule';
+import { AppComponent } from './app.component';
+import { CoreModule } from './core/core.module';
+import { AuthModule } from './auth/auth.module';
+import { AuthEffects } from './auth/store/auth.effects';
+import { AuthService } from './services/AuthService';
 
 // import { TokenInterceptor } from "./utils/TokenInterceptor";
 
 @NgModule({
     declarations: [
-        AppPageComponent
+        AppComponent
     ],
     imports: [
         BrowserModule,
@@ -42,8 +44,8 @@ import { AuthModule } from './auth/AuthModule';
         EffectsModule.forRoot([]),
 
         AppRoutingModule,
+        AuthModule.forRoot(),
         CoreModule.forRoot(),
-        AuthModule.forRoot()
     ],
     providers: [
         {
@@ -56,7 +58,7 @@ import { AuthModule } from './auth/AuthModule';
         //     multi: true
         // }
     ],
-    bootstrap: [AppPageComponent]
+    bootstrap: [AppComponent]
 })
 
 export class AppModule { }
