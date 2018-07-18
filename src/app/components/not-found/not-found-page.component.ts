@@ -6,7 +6,7 @@ import RS from '../../shared/resources/ResourceManager';
     moduleId: module.id,
     changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'not-found-page',
-    templateUrl: './NotFoundPageView.html'
+    templateUrl: './not-found-page.component.html'
 })
 
 export class NotFoundPageComponent implements OnInit {

@@ -6,12 +6,14 @@ import { Observable } from "rxjs/Observable";
 import { Injectable } from "@angular/core";
 import { GlobalApp } from "./GlobalApps";
 import { tap } from 'rxjs/operators';
+import { Router } from "@angular/router";
 
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-    constructor(private globalApp: GlobalApp) {
+    constructor(private globalApp: GlobalApp,
+                private router: Router) {
     }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -40,6 +42,7 @@ export class TokenInterceptor implements HttpInterceptor {
                 if (err instanceof HttpErrorResponse) {
                     if (err.status === 404) {
                         //navigate the user to login route
+                        this.router.navigateByUrl('/login');
                         //remove the token from the localStorage
                     }
                 }

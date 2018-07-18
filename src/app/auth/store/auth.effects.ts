@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Effect, Actions } from '@ngrx/effects';
 
 import { of } from 'rxjs/observable/of';
-import { from } from 'rxjs';
 import { map, tap, catchError, exhaustMap} from 'rxjs/operators';
 
 import { AuthService } from '../../services/AuthService';
@@ -41,7 +40,7 @@ export class AuthEffects {
     signInSuccess$ = this.actions$
         .ofType(AuthActionTypes.SIGN_IN_SUCCESS)
         .pipe(tap(() => {
-            this.router.navigate(['/']);
+            this.router.navigate(['/admin/dashboard']);
         }));
 
     @Effect({dispatch: false})

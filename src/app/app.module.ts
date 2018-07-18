@@ -24,10 +24,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
-import { AuthEffects } from './auth/store/auth.effects';
-import { AuthService } from './services/AuthService';
 
-// import { TokenInterceptor } from "./utils/TokenInterceptor";
+import { TokenInterceptor } from "./utils/TokenInterceptor";
 
 @NgModule({
     declarations: [
@@ -52,11 +50,11 @@ import { AuthService } from './services/AuthService';
             provide: RouterStateSerializer,
             useClass: CustomRouterStateSerializer
         },
-        // {
-        //     provide: HTTP_INTERCEPTORS,
-        //     useClass: TokenInterceptor,
-        //     multi: true
-        // }
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: TokenInterceptor,
+            multi: true
+        }
     ],
     bootstrap: [AppComponent]
 })

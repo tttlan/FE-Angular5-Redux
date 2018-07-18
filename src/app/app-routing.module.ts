@@ -1,19 +1,18 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 import { AuthGuardService } from './services/AuthGuardService';
-import { NotFoundPageComponent } from './components/not-found/NotFoundPageComponent';
+import { NotFoundPageComponent } from './components/not-found/not-found-page.component';
 import { SigninComponent } from './auth/signin/signin.component';
-import { HomePageComponent } from './core/home/homepage.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
     {
-        path: '',
-        // loadChildren: 'app/modules/HomeModule#HomeModule',
-        component: HomePageComponent,
-        canActivate: [AuthGuardService],
-    },
+		path: '',
+		redirectTo: 'sign-in',
+		pathMatch: 'full'
+	},
     {
         path: 'sign-in',
         component: SigninComponent
@@ -21,6 +20,11 @@ const routes: Routes = [
     {
         path: 'sign-up',
         component: SignupComponent
+    },
+    {
+        path: 'admin',
+        canActivate: [AuthGuardService],
+        loadChildren: '../app/admin/admin.module#AdminModule'
     },
     // {
     //     path: '404',
@@ -43,7 +47,7 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(routes, { useHash: false })
+        RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
     ],
     providers: [
         AuthGuardService
