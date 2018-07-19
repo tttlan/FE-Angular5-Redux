@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -24,8 +26,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
+import { JwtInterceptor, ErrorInterceptor, fakeBackendProvider } from './helpers/index';
 
-import { TokenInterceptor } from "./utils/TokenInterceptor";
 
 @NgModule({
     declarations: [
@@ -40,6 +42,7 @@ import { TokenInterceptor } from "./utils/TokenInterceptor";
         StoreRouterConnectingModule,
         AppSettings.ENVIRONMENT === 'dev' ? StoreDevtoolsModule.instrument() : [],
         EffectsModule.forRoot([]),
+        ToastrModule.forRoot(),
 
         AppRoutingModule,
         CoreModule.forRoot(),
@@ -52,9 +55,17 @@ import { TokenInterceptor } from "./utils/TokenInterceptor";
         },
         {
             provide: HTTP_INTERCEPTORS,
-            useClass: TokenInterceptor,
+            useClass: JwtInterceptor,
             multi: true
-        }
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: ErrorInterceptor,
+            multi: true
+        },
+        
+        // provider used to create fake backend
+        fakeBackendProvider
     ],
     bootstrap: [AppComponent]
 })

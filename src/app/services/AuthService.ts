@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
+import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import { map } from 'rxjs/operators';
+import { _throw } from "rxjs/observable/throw";
+import { of } from "rxjs/observable/of";
+import { HttpClient } from '@angular/common/http';
+
 import { initialUser } from '../models/UserModel';
 import {BaseService} from "./BaseService";
-import {BehaviorSubject} from "rxjs/BehaviorSubject";
-import {_throw} from "rxjs/observable/throw";
-import {of} from "rxjs/observable/of";
 import { Auth } from '../models/AuthModel';
 export const MOCK_USER = initialUser;
 @Injectable()
@@ -13,7 +16,7 @@ export class AuthService {
     user = new BehaviorSubject<{}>(null);
 
 
-    constructor(private http: BaseService) {
+    constructor(private http_base: BaseService, private http: HttpClient) {
 
     }
 
@@ -53,7 +56,23 @@ export class AuthService {
         this.user.asObservable();
     }
 
+    login(auth: Auth) {
+        return this.http.post<any>(`/users/authenticate`, { username: auth.email, password: auth.password })
+            .pipe(map(user => {
+                // login successful if there's a jwt token in the response
+                if (user && user.token) {
+                    // store user details and jwt token in local storage to keep user logged in between page refreshes
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+                }
 
+                return user;
+            }));
+    }
+
+    logout() {
+        // remove user from local storage to log user out
+        localStorage.removeItem('currentUser');
+    }
 
 
 }

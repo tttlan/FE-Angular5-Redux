@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { fadeInAnimation } from '../_animations/fade-in.animation';
-import { RouterOutlet } from '../../../node_modules/@angular/router';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
     moduleId: module.id,

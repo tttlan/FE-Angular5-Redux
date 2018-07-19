@@ -242,6 +242,10 @@ module.exports = () => {
             return gulp.src(conf.configs.ngrx)
                 .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + '@ngrx/'));
         },
+        copyNgxToastrTask: () => {
+            return gulp.src(conf.configs.ngxtoastr)
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + 'ngx-toastr/'));
+        },
         bundleJsTask: () => {
             return gulp.src(conf.bundleJs)
                 // .pipe(eslint({
@@ -274,6 +278,7 @@ module.exports = () => {
                     'copy-rxjs-compat',
                     'copy-angularWebApi',
                     'copy-ngrx',
+                    'copy-ngx-toastr',
                     'copy-ngrx-store-freeze',
                     'copy-hammerjs',
                     'copy-corejs',

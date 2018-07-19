@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { NgForm } from '../../../../node_modules/@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
-import { Auth, initialAuth, AuthStore } from '../../models/AuthModel';
+import { Auth, AuthStore } from '../../models/AuthModel';
 import RS from '../../shared/resources/ResourceManager';
 import * as fromAuthActions from '../store/auth.actions';
 import * as fromAuthReducers from '../store/index';
+
+
 
 @Component({
     moduleId: module.id,
@@ -15,20 +18,47 @@ import * as fromAuthReducers from '../store/index';
 })
 
 export class SignupComponent implements OnInit {
-    resource: any;
-    auth: Auth;
-    error$: Observable<any>;
+    registerForm: FormGroup;
     loading$: Observable<boolean>;
+    submitted = false;
 
-    constructor(private store: Store<AuthStore>) { }
+    constructor(
+        private formBuilder: FormBuilder,
+        private router: Router,
+        private store: Store<AuthStore>) { }
 
     ngOnInit() {
-        this.resource = RS;
-        this.auth = initialAuth;
+        this.registerForm = this.formBuilder.group({
+            firstName: ['', Validators.required],
+            lastName: ['', Validators.required],
+            username: ['', Validators.required],
+            password: ['', [Validators.required, Validators.minLength(6)]]
+        });
+        this.loading$ = this.store.select(fromAuthReducers.getSignInLoading);
     }
 
-    onSignup(form: NgForm) {
-        this.auth.email = form.value.email;
-        this.auth.password = form.value.password;
+    // convenience getter for easy access to form fields
+    get f() { return this.registerForm.controls; }
+
+    onSubmit() {
+        this.submitted = true;
+
+        // stop here if form is invalid
+        if (this.registerForm.invalid) {
+            return;
+        }
+
+        this.store.dispatch(new fromAuthActions.SignUpAction(this.registerForm.value));
+        // this.userService.register(this.registerForm.value)
+        //     .pipe(first())
+        //     .subscribe(
+        //         data => {
+        //             this.alertService.success('Registration successful', true);
+        //             this.router.navigate(['/login']);
+        //         },
+        //         error => {
+        //             this.alertService.error(error);
+        //             this.loading = false;
+        //         });
     }
 }

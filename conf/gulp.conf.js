@@ -99,6 +99,7 @@ exports.configs = {
     ng2Bootstrap: './node_modules/ng2-bootstrap/bundles/ng2-bootstrap.umd.js',
     jquery: './node_modules/jquery/dist/jquery.min.js',
     ngrx: './node_modules/@ngrx/**/*.js',
+    ngxtoastr: './node_modules/ngx-toastr/bundles/ngx-toastr.umd.js',
     ngrxStoreFreeze: './node_modules/ngrx-store-freeze/**/*.js',
     hammerjs: './node_modules/hammerjs/**/*',
     materialTheme: './node_modules/@angular/material/prebuilt-themes/indigo-pink.css',

@@ -65,6 +65,27 @@ export function reducer(state: any = initialState, action: Actions): AuthStore {
                 loading: false
             };
         }
+        case AuthActionTypes.SIGN_UP: {
+            return {
+                ...state,
+                error: null,
+                loading: true
+            };
+        }
+        case AuthActionTypes.SIGN_UP_SUCCESS: {
+            return {
+                ...state,
+                error: null,
+                loading: false
+            };
+        }
+        case AuthActionTypes.SIGN_UP_ERROR: {
+            return {
+                ...state,
+                error: action.payload,
+                loading: false
+            };
+        }
         default: {
             return state;
         }

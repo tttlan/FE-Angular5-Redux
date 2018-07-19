@@ -47,6 +47,7 @@
             '@ngrx/router-store': 'npm:@ngrx/router-store/bundles/router-store.umd.js',
             'deep-freeze-strict': 'npm:deep-freeze-strict',
             'ngrx-store-freeze': 'npm:ngrx-store-freeze',
+            'ngx-toastr': 'npm:ngx-toastr/ngx-toastr.umd.js',
             'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api/bundles/in-memory-web-api.umd.js',
             'tslib': 'npm:tslib.js',
             'lodash': 'npm:lodash.js',

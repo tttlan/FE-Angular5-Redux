@@ -39,6 +39,7 @@ gulp.task('copy-ngrx-store-freeze', gulpCommon.copyNgrxStoreFreezeTask);
 gulp.task('copy-deep-freeze-strict', gulpCommon.copyDeepFreezeStrictTask);
 gulp.task('copy-hammerjs', gulpCommon.copyHammerjsTask);
 gulp.task('copy-ngrx', gulpCommon.copyNgRxTask);
+gulp.task('copy-ngx-toastr', gulpCommon.copyNgxToastrTask);
 gulp.task('vendor-js', gulpCommon.vendorJsTask);
 gulp.task('bundle-js', gulpCommon.bundleJsTask);
 gulp.task('tslint', gulpCommon.tslintTask);

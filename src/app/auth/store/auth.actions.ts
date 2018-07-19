@@ -99,6 +99,27 @@ export class SignOutErrorAction implements Action {
 }
 
 /**
+ * Sign Up
+ */
+export class SignUpAction implements Action {
+    readonly type: string = AuthActionTypes.SIGN_UP;
+
+    constructor(public payload?: any) {}
+}
+
+export class SignUpSuccessAction implements Action {
+    readonly type: string = AuthActionTypes.SIGN_UP_SUCCESS;
+
+    constructor(public payload?: any) { }
+}
+
+export class SignUpErrorAction implements Action {
+    readonly type: string = AuthActionTypes.SIGN_UP_ERROR;
+
+    constructor(public payload?: any) { }
+}
+
+/**
  * Actions type
  *
  * @type {Actions}
@@ -110,4 +131,7 @@ export type Actions =
     | SignInRedirectAction
     | SignOutAction
     | SignOutSuccessAction
-    | SignOutErrorAction;
+    | SignOutErrorAction
+    | SignUpAction
+    | SignUpSuccessAction
+    | SignUpErrorAction;
