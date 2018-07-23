@@ -42,7 +42,9 @@ import { JwtInterceptor, ErrorInterceptor, fakeBackendProvider } from './helpers
         StoreRouterConnectingModule,
         AppSettings.ENVIRONMENT === 'dev' ? StoreDevtoolsModule.instrument() : [],
         EffectsModule.forRoot([]),
-        ToastrModule.forRoot(),
+        ToastrModule.forRoot({
+            closeButton: true
+        }),
 
         AppRoutingModule,
         CoreModule.forRoot(),
