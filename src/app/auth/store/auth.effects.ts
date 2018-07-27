@@ -44,6 +44,13 @@ export class AuthEffects {
         .pipe(tap(() => {
             this.router.navigate(['/admin/dashboard']);
         }));
+    
+    @Effect({dispatch: false})
+    signInError$ = this.actions$
+        .ofType(AuthActionTypes.SIGN_IN_ERROR)
+        .pipe(map((action: fromAuthActions.SignInErrorAction) => {
+                this.toastr.error(action.payload);
+        }));
 
     @Effect({dispatch: false})
     signInRedirect$ = this.actions$
