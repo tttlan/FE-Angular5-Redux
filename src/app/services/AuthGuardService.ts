@@ -11,16 +11,19 @@ export class AuthGuardService implements CanActivate {
   constructor(private store: Store<fromAuth.State>) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const observable = this.store.select(fromAuth.getLoggedIn);
-    observable.subscribe(authed => {
+    if (localStorage.getItem('currentUser')) {
+      // logged in so return true
+      return true;
+    } else {
+      const observable = this.store.select(fromAuth.getLoggedIn);
+      observable.subscribe(authed => {
       if (!authed) {
         this.store.dispatch(new Auth.SignInRedirectAction());
         return false;
       }
-
-      return true;
-    });
-
-    return observable;
+        return true;
+      });
+      return observable;
+    }  
   }
 }

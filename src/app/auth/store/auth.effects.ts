@@ -52,14 +52,13 @@ export class AuthEffects {
             this.router.navigate(['/sign-in']);
         }));
 
-    @Effect()
+    @Effect({dispatch: false})
     signOut$ = this.actions$
         .ofType(AuthActionTypes.SIGN_OUT)
-        .pipe(map(
-            () => new fromAuthActions.SignOutAction
-        ),
-        map(
-            () => new fromAuthActions.SignOutSuccessAction
+        .pipe(tap(_ => {
+            this.authService.logout();
+            this.router.navigate(['/sign-in']);
+          }
         ));
 
     @Effect()
@@ -91,7 +90,6 @@ export class AuthEffects {
             this.toastr.error(action.payload);
         }));
     
-
     /**
      * @constructor
      * @param {Actions} actions

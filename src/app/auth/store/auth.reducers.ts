@@ -54,17 +54,10 @@ export function reducer(state: any = initialState, action: Actions): AuthStore {
             return {
                 ...state,
                 error: null,
-                loading: true
+                loggedIn: false
             };
         }
-        case AuthActionTypes.SIGN_OUT_SUCCESS: {
-            return {
-                ...state,
-                loggedIn: false,
-                error: null,
-                loading: false
-            };
-        }
+
         case AuthActionTypes.SIGN_UP: {
             return {
                 ...state,
