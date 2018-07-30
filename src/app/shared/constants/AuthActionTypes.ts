@@ -10,5 +10,6 @@ export const AuthActionTypes = {
     SIGN_OUT_ERROR: type('[auth] Sign Out Error'),
     SIGN_UP: type('[auth] Sign Up'),
     SIGN_UP_SUCCESS: type('[auth] Sign Up Success'),
-    SIGN_UP_ERROR: type('[auth] Sign Up Error')
+    SIGN_UP_ERROR: type('[auth] Sign Up Error'),
+    GET_STATE_SIGNIN: type('[auth] Get State Of Sign In')
 };

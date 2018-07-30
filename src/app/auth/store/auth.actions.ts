@@ -119,6 +119,12 @@ export class SignUpErrorAction implements Action {
     constructor(public payload?: any) { }
 }
 
+export class GetStateSignInAction implements Action {
+    readonly type: string = AuthActionTypes.GET_STATE_SIGNIN;
+
+    constructor(public payload?: any) { }
+}
+
 /**
  * Actions type
  *
@@ -134,4 +140,5 @@ export type Actions =
     | SignOutErrorAction
     | SignUpAction
     | SignUpSuccessAction
-    | SignUpErrorAction;
+    | SignUpErrorAction
+    | GetStateSignInAction;

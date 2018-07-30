@@ -4,6 +4,7 @@ import {Observable} from "rxjs/Observable";
 import { Router, NavigationStart, NavigationEnd, NavigationCancel, RouterEvent, NavigationError } from '@angular/router';
 
 import * as fromAuthReducers from './auth/store/index';
+import * as fromAuthActions from './auth/store/auth.actions';
 import { AuthStore } from './models/AuthModel';
 
 @Component({
@@ -22,6 +23,9 @@ export class AppComponent {
         this.router.events.subscribe((event: RouterEvent) => {
             this.navigationInterceptor(event);
         });
+        if (localStorage.getItem('currentUser')) {
+            this.store.dispatch(new fromAuthActions.GetStateSignInAction());
+        }
     }
 
     ngOnInit() {

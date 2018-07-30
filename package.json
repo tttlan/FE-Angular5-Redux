@@ -41,6 +41,7 @@
     "lodash": "^4.17.4",
     "ngrx-store-freeze": "^0.2.0",
     "ngx-toastr": "^8.9.0",
+    "npm": "^6.2.0",
     "reflect-metadata": "^0.1.12",
     "respond.js": "^1.4.2",
     "rxjs": "^6.2.1",

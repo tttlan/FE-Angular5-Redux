@@ -3,6 +3,7 @@ import {Observable} from "rxjs";
 import {Store} from "@ngrx/store";
 
 import * as fromAuthReducers from '../../auth/store/index';
+import * as fromAuthActions from '../../auth/store/auth.actions';
 import * as AuthAction from '../../auth/store/auth.actions';
 import { AuthStore } from '../../models/AuthModel';
 
@@ -18,9 +19,13 @@ export class HeaderComponent   {
 
     constructor(private store: Store<AuthStore>) {
         this.loggedIn$ = this.store.select(fromAuthReducers.getLoggedIn);
+        
     }
 
     ngOnInit() {
+        if (localStorage.getItem('currentUser')) {
+            
+        }
     }
 
     onLogout() {

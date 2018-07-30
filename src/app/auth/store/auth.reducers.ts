@@ -79,6 +79,14 @@ export function reducer(state: any = initialState, action: Actions): AuthStore {
                 loading: false
             };
         }
+        case AuthActionTypes.GET_STATE_SIGNIN: {
+            return {
+                ...state,
+                error: null,
+                loading: false,
+                loggedIn: true
+            };
+        }
         default: {
             return state;
         }
