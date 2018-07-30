@@ -1,6 +1,6 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 
-import * as fromRootReducers from './CoreReducer';
+import * as fromRootReducers from '../../store/CoreReducer';
 import * as fromAuthReducers from './auth.reducers';
 
 export interface State extends fromRootReducers.State {
