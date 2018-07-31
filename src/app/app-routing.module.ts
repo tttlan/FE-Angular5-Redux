@@ -9,36 +9,19 @@ import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
     {
-		path: '',
-		redirectTo: 'sign-in',
-		pathMatch: 'full'
-	},
+        path: '',
+        canActivate: [AuthGuardService],
+        loadChildren: '../app/admin/admin.module#AdminModule'
+    },
     {
         path: 'sign-in',
+        canActivate: [!AuthGuardService],
         component: SigninComponent
     },
     {
         path: 'sign-up',
         component: SignupComponent
     },
-    {
-        path: 'admin',
-        canActivate: [AuthGuardService],
-        loadChildren: '../app/admin/admin.module#AdminModule'
-    },
-    // {
-    //     path: '404',
-    //     component: NotFoundPageComponent
-    // },
-    // {
-    //     path: 'auth',
-    //     loadChildren: 'app/modules/AuthModule#AuthModule'
-    // },
-    // {
-    //     path: 'home',
-    //     loadChildren: 'app/modules/HomeModule#HomeModule',
-    //     // canActivate: [AuthGuardService],
-    // },
     {
         path: '**',
         component: NotFoundPageComponent

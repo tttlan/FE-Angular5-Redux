@@ -6,7 +6,7 @@ import { SettingComponent } from './setting/setting.component';
 
 const routes: Routes = [
 	{
-        path: '',
+        path: 'admin',
         component: AdminComponent,
         children: [
             { path: 'dashboard', component: DashboardComponent, data: { state: 'dashboard'} },

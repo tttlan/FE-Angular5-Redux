@@ -19,9 +19,11 @@ import { BaseService } from "../services/BaseService";
 import { ApiHelpers } from "../utils/ApiHelpers";
 import { GlobalApp } from "../utils/GlobalApps";
 import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 const CORE_COMPONENTS = [
     HeaderComponent,
+    FooterComponent,
     ShowErrorsComponent,
     LayoutComponent,
     NotFoundPageComponent,
