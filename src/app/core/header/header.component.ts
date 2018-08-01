@@ -4,7 +4,6 @@ import {Store} from "@ngrx/store";
 
 import * as fromAuthReducers from '../../auth/store/index';
 import * as fromAuthActions from '../../auth/store/auth.actions';
-import * as AuthAction from '../../auth/store/auth.actions';
 import { AuthStore } from '../../models/AuthModel';
 import { User } from '../../models/UserModel';
 
@@ -24,12 +23,10 @@ export class HeaderComponent   {
     }
 
     ngOnInit() {
-        if (localStorage.getItem('currentUser')) {
-            this.user$ = this.store.select(fromAuthReducers.getUser);
-        }
+        this.user$ = this.store.select(fromAuthReducers.getUser);
     }
 
     onLogout() {
-        this.store.dispatch(new AuthAction.SignOutAction());
+        this.store.dispatch(new fromAuthActions.SignOutAction());
     }
 }

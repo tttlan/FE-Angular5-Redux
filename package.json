@@ -29,6 +29,8 @@
     "@ngrx/store": "^4.1.1",
     "@ngrx/store-devtools": "^4.1.1",
     "@ngrx/store-log-monitor": "^3.0.2",
+    "@ngx-translate/core": "^10.0.2",
+    "@ngx-translate/http-loader": "^3.0.1",
     "@types/angular": "^1.6.40",
     "angular2-in-memory-web-api": "0.0.21",
     "bootstrap": "^3.3.7",

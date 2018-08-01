@@ -9,13 +9,13 @@ import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
     {
-        path: 'sign-in',
-        component: SigninComponent
+        path: '',
+        loadChildren: '../app/admin/admin.module#AdminModule',
+        canActivate: [AuthGuardService]
     },
     {
-        path: '',
-        canActivate: [AuthGuardService],
-        loadChildren: '../app/admin/admin.module#AdminModule'
+        path: 'sign-in',
+        component: SigninComponent
     },
     {
         path: 'sign-up',

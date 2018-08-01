@@ -246,6 +246,14 @@ module.exports = () => {
             return gulp.src(conf.configs.ngxtoastr)
                 .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + 'ngx-toastr/'));
         },
+        copyNgxTranslateCoreTask: () => {
+            return gulp.src(conf.configs.ngxTranslateCore)
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + '@ngx-translate/core/'));
+        },
+        copyNgxTranslateHttpLoaderTask: () => {
+            return gulp.src(conf.configs.ngxTranslateHttpLoader)
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + '@ngx-translate/http-loader/'));
+        },
         bundleJsTask: () => {
             return gulp.src(conf.bundleJs)
                 // .pipe(eslint({
@@ -279,6 +287,8 @@ module.exports = () => {
                     'copy-angularWebApi',
                     'copy-ngrx',
                     'copy-ngx-toastr',
+                    'copy-ngx-transtate-core',
+                    'copy-ngx-transtate-http-loader',
                     'copy-ngrx-store-freeze',
                     'copy-hammerjs',
                     'copy-corejs',

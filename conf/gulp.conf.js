@@ -100,6 +100,8 @@ exports.configs = {
     jquery: './node_modules/jquery/dist/jquery.min.js',
     ngrx: './node_modules/@ngrx/**/*.js',
     ngxtoastr: './node_modules/ngx-toastr/bundles/ngx-toastr.umd.js',
+    ngxTranslateCore: './node_modules/@ngx-translate/core/bundles/ngx-translate-core.umd.js',
+    ngxTranslateHttpLoader: './node_modules/@ngx-translate/http-loader/bundles/ngx-translate-http-loader.umd.js',
     ngrxStoreFreeze: './node_modules/ngrx-store-freeze/**/*.js',
     hammerjs: './node_modules/hammerjs/**/*',
     materialTheme: './node_modules/@angular/material/prebuilt-themes/indigo-pink.css',

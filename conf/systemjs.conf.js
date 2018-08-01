@@ -48,6 +48,8 @@
             'deep-freeze-strict': 'npm:deep-freeze-strict',
             'ngrx-store-freeze': 'npm:ngrx-store-freeze',
             'ngx-toastr': 'npm:ngx-toastr/ngx-toastr.umd.js',
+            '@ngx-translate/core': 'npm:@ngx-translate/core/ngx-translate-core.umd.js',
+            '@ngx-translate/http-loader': 'npm:@ngx-translate/http-loader/ngx-translate-http-loader.umd.js',
             'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api/bundles/in-memory-web-api.umd.js',
             'tslib': 'npm:tslib.js',
             'lodash': 'npm:lodash.js',

@@ -42,7 +42,7 @@ export class AuthEffects {
     signInSuccess$ = this.actions$
         .ofType(AuthActionTypes.SIGN_IN_SUCCESS)
         .pipe(tap(() => {
-            this.router.navigate(['/admin/dashboard']);
+            this.router.navigate(['/dashboard']);
         }));
     
     @Effect({dispatch: false})
