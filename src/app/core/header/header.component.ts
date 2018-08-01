@@ -6,6 +6,7 @@ import * as fromAuthReducers from '../../auth/store/index';
 import * as fromAuthActions from '../../auth/store/auth.actions';
 import * as AuthAction from '../../auth/store/auth.actions';
 import { AuthStore } from '../../models/AuthModel';
+import { User } from '../../models/UserModel';
 
 @Component({
     moduleId: module.id,
@@ -16,7 +17,7 @@ import { AuthStore } from '../../models/AuthModel';
 
 export class HeaderComponent   {
     loggedIn$: Observable<boolean>;
-
+    user$: Observable<User>;
     constructor(private store: Store<AuthStore>) {
         this.loggedIn$ = this.store.select(fromAuthReducers.getLoggedIn);
         
@@ -24,7 +25,7 @@ export class HeaderComponent   {
 
     ngOnInit() {
         if (localStorage.getItem('currentUser')) {
-            
+            this.user$ = this.store.select(fromAuthReducers.getUser);
         }
     }
 

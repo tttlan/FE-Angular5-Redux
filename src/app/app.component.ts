@@ -24,7 +24,8 @@ export class AppComponent {
             this.navigationInterceptor(event);
         });
         if (localStorage.getItem('currentUser')) {
-            this.store.dispatch(new fromAuthActions.GetStateSignInAction());
+            let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            this.store.dispatch(new fromAuthActions.SetStateSignInAction(currentUser));
         }
     }
 

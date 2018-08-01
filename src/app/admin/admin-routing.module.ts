@@ -9,6 +9,7 @@ const routes: Routes = [
         path: 'admin',
         component: AdminComponent,
         children: [
+            { path: '', component: AdminComponent },
             { path: 'dashboard', component: DashboardComponent, data: { state: 'dashboard'} },
             { path: 'setting', component: SettingComponent, data: { state: 'setting'} }
         ]

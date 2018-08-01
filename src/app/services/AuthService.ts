@@ -31,7 +31,7 @@ export class AuthService {
 
         // return this.http.post<Auth>(url, options);
 
-        if (auth.email === MOCK_USER.email && auth.password === MOCK_USER.password) {
+        if (auth.email === MOCK_USER.username && auth.password === MOCK_USER.password) {
             return of(MOCK_USER);
         }
 
