@@ -19,7 +19,6 @@ export class HeaderComponent   {
     user$: Observable<User>;
     constructor(private store: Store<AuthStore>) {
         this.loggedIn$ = this.store.select(fromAuthReducers.getLoggedIn);
-        
     }
 
     ngOnInit() {

@@ -1,29 +1,46 @@
-.nav.navbar-nav li a {
+.navbar-nav li a {
    cursor: pointer; 
 }
-.nav.navbar-nav li.user-text {
-    display: inline-block;
-    padding: 15px 15px;
-    & a {
-        padding: 0;
-        float: left;
-    }
-    & .devider {
-        float: left;
-        padding: 0 4px;
-        color: #9d9d9d;
+.navbar-nav {
+    &.navbar-right {
+        margin-left: auto;
     }
 }
-.form-inline {
-    float: left;
-    margin-top: 5px;
-    flex-flow: row wrap;
-    align-items: center; // Prevent shorter elements from growing to same height as others (e.g., small buttons growing to normal sized button height)
-  
-    // Because we use flex, the initial sizing of checkboxes is collapsed and
-    // doesn't occupy the full-width (which is what we want for xs grid tier),
-    // so we force that here.
-    .form-check {
-      width: 100%;
+
+$topnav-background-color: #222;
+.navbar {
+    background-color: $topnav-background-color;
+    .navbar-brand {
+        color: #fff;
+    }
+    .nav-item > a {
+        color: #999;
+        &:hover {
+            color: #fff;
+        }
     }
 }
+.messages {
+    width: 300px;
+    .media {
+        border-bottom: 1px solid #ddd;
+        padding: 5px 10px;
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+    .media-body {
+        h5 {
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .small {
+            margin: 0;
+        }
+        .last {
+            font-size: 12px;
+            margin: 0;
+        }
+    }
+}
+
