@@ -14,3 +14,16 @@
         color: #9d9d9d;
     }
 }
+.form-inline {
+    float: left;
+    margin-top: 5px;
+    flex-flow: row wrap;
+    align-items: center; // Prevent shorter elements from growing to same height as others (e.g., small buttons growing to normal sized button height)
+  
+    // Because we use flex, the initial sizing of checkboxes is collapsed and
+    // doesn't occupy the full-width (which is what we want for xs grid tier),
+    // so we force that here.
+    .form-check {
+      width: 100%;
+    }
+}

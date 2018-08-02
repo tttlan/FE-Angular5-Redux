@@ -49,6 +49,7 @@ export const createTranslateLoader = (http: HttpClient) => {
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
+
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
