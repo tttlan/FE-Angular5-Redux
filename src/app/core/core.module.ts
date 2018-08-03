@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import * as fromAngularForms from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 // import core components
 import { ShowErrorsComponent } from '../components/show-errors.component';
@@ -36,6 +37,7 @@ const CORE_COMPONENTS = [
     imports: [
         CommonModule,
         RouterModule,
+        TranslateModule,
         
         fromAngularForms.FormsModule,
         fromAngularForms.ReactiveFormsModule,

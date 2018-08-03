@@ -10,6 +10,7 @@ module.exports = () => {
             return runSequence(
                 'clean', [
                     'copy-fonts',
+                    'copy-languages',
                     'copy-images',
                     'vendor-css',
                     'vendor-js',

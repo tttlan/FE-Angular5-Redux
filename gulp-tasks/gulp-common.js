@@ -106,6 +106,10 @@ module.exports = () => {
             return gulp.src(conf.paths.src + conf.paths.assetFontsFile)
                 .pipe(gulp.dest(conf.paths.build + conf.paths.buildFontsFolder));
         },
+        copyLanguagesTask: () => {
+            return gulp.src(conf.paths.src + conf.paths.assetLanguages)
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLanguagesFolder));
+        },
         copyIndexTask: () => {
             minifyIndex();
         },
@@ -333,6 +337,12 @@ module.exports = () => {
                 interval: OPTIONS.watchInterval
             }, () => {
                 runSequence('copy-fonts');
+            });
+
+            gulp.watch(conf.paths.src + conf.paths.assetLanguages, {
+                interval: OPTIONS.watchInterval
+            }, () => {
+                runSequence('copy-languages');
             });
 
             gulp.watch(conf.paths.src + conf.paths.assetCssFile, {

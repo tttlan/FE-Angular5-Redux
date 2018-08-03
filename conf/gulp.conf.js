@@ -22,6 +22,7 @@ exports.paths = {
     appIndexFile: '/index.html',
 
     assetCssFile: '/assets/css/**/*.css',
+    assetLanguages: '/assets/i18n/*.json',
     assetCssAllFile: '/assets/**/*.css',
     assetImageFile: '/assets/images/**/*',
     assetImageAllFile: '/assets/images/**',
@@ -33,6 +34,7 @@ exports.paths = {
     buildCssFolder: '/css/',
     buildImageFolder: '/images/',
     buildFontsFolder: '/fonts/',
+    buildLanguagesFolder: '/i18n/',
     buildLibsFolder: '/libs/',
     buildJsFolder: '/js/',
     buildAppFolder: '/app/'

@@ -12,6 +12,7 @@ gulp.task('clean', gulpCommon.cleanTask);
 gulp.task('copy-views', gulpCommon.copyViewsTask);
 gulp.task('copy-images', gulpCommon.copyImagesTask);
 gulp.task('copy-fonts', gulpCommon.copyFontsTask);
+gulp.task('copy-languages', gulpCommon.copyLanguagesTask);
 gulp.task('copy-index', gulpCommon.copyIndexTask);
 gulp.task('sass', gulpCommon.sassTask);
 gulp.task('lint-fix', gulpCommon.lintFixTask);
