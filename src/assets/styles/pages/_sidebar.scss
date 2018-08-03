@@ -7,7 +7,6 @@ $topnav-background-color: #222;
     left: 235px;
     width: 235px;
     margin-left: -235px;
-    margin-bottom: 48px;
     border: none;
     border-radius: 0;
     overflow-y: auto;
@@ -137,6 +136,14 @@ $topnav-background-color: #222;
         top: 54px;
         left: 0px;
     }
+    .toggle-button {
+        left: 0px;
+    }
+    .push-right {
+        .sidebar {
+            left: 235px !important;
+        }
+    }
 }
 @media print {
     .sidebar {
@@ -165,7 +172,7 @@ $topnav-background-color: #222;
 
 .toggle-button {
     left: 0;
-    position: fixed;
+    position: absolute;
     width: 236px;
     cursor: pointer;
     padding: 12px;

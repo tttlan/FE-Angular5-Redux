@@ -18,6 +18,8 @@ import { User } from '../../models/UserModel';
 export class HeaderComponent   {
     loggedIn$: Observable<boolean>;
     user$: Observable<User>;
+    pushRightClass: string = 'push-right';
+    
     constructor(private store: Store<AuthStore>,
                 private translate: TranslateService) {
         this.loggedIn$ = this.store.select(fromAuthReducers.getLoggedIn);
@@ -39,5 +41,10 @@ export class HeaderComponent   {
 
     changeLang(language: string) {
         this.translate.use(language);
+    }
+
+    toggleSidebar() {
+        const dom: any = document.querySelector('body');
+        dom.classList.toggle(this.pushRightClass);
     }
 }
