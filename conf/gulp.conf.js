@@ -31,12 +31,12 @@ exports.paths = {
     assetJsFile: '/assets/js/**/*.js',
     assetJsAllFile: '/assets/**/*.js',
 
-    buildCssFolder: '/css/',
-    buildImageFolder: '/images/',
-    buildFontsFolder: '/fonts/',
-    buildLanguagesFolder: '/i18n/',
+    buildCssFolder: '/assets/css/',
+    buildImageFolder: '/assets/images/',
+    buildFontsFolder: '/assets/fonts/',
+    buildLanguagesFolder: '/assets/i18n/',
     buildLibsFolder: '/libs/',
-    buildJsFolder: '/js/',
+    buildJsFolder: '/assets/js/',
     buildAppFolder: '/app/'
 };
 
