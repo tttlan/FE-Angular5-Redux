@@ -1,5 +1,6 @@
 <app-header></app-header>
-<section class="main-container">
+<app-sidebar (collapsedEvent)="receiveCollapsed($event)"></app-sidebar>
+<section class="main-container" [ngClass]="{collapsed: collapedSideBar}">
     <div class="row">
         <div class="col-md-12">
             <main [@fadeInAnimation]="getState(o)">
@@ -9,5 +10,5 @@
     </div>
 </section>
 <!-- FOOTER -->
-<app-footer></app-footer>
+<!-- <app-footer></app-footer> -->
 

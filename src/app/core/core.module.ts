@@ -21,10 +21,12 @@ import { ApiHelpers } from "../utils/ApiHelpers";
 import { GlobalApp } from "../utils/GlobalApps";
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { SiderbarComponent } from './sidebar/sidebar.component';
 
 const CORE_COMPONENTS = [
     HeaderComponent,
     FooterComponent,
+    SiderbarComponent,
     ShowErrorsComponent,
     LayoutComponent,
     NotFoundPageComponent,

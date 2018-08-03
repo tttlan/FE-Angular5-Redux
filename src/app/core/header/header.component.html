@@ -1,11 +1,11 @@
-<nav *ngIf="loggedIn$ | async" class="navbar navbar-expand fixed-top navbar-dark bg-dark">
+<nav *ngIf="loggedIn$ | async" class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
     <a class="navbar-brand" routerLink="/">FINSTRO UI</a>
-    <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <!-- <span class="navbar-toggler-icon"></span> -->
             <i class="fa fa-bars text-muted" aria-hidden="true"></i>
     </button>
 
-    <div class="collapse navbar-collapse">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <form class="form-inline">
             <input type="text" class="form-control" placeholder="{{ 'Search' | translate }}">
         </form>
@@ -113,11 +113,3 @@
         </ul>
     </div>
 </nav>
-<!-- 
-    <div class="col-sm-3 col-md-2 sidebar">
-        <ul class="nav nav-sidebar">
-            <li><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Analytics</a></li>
-        </ul>
-    </div> -->
-<!-- </header> -->

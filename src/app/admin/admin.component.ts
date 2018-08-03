@@ -11,6 +11,8 @@ import { RouterOutlet } from '@angular/router';
 
 export class AdminComponent implements OnInit {
 
+    collapedSideBar: boolean;
+
     constructor() {
 
     }
@@ -19,5 +21,9 @@ export class AdminComponent implements OnInit {
 
     getState(outlet: RouterOutlet) {
         return outlet.activatedRouteData.state;
+    }
+
+    receiveCollapsed($event: any) {
+        this.collapedSideBar = $event;
     }
 }
