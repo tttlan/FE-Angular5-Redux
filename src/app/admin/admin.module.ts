@@ -6,6 +6,7 @@ import { AdminComponent } from './admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingComponent } from './setting/setting.component';
 import { CoreModule } from '../core/core.module';
+import { PageHeaderComponent } from '../shared/modules/page-header.component';
 
 @NgModule({
     imports: [
@@ -16,7 +17,8 @@ import { CoreModule } from '../core/core.module';
     declarations: [
         AdminComponent,
         DashboardComponent,
-        SettingComponent
+        SettingComponent,
+        PageHeaderComponent
     ]
 })
 export class AdminModule { }
