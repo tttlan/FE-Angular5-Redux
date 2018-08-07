@@ -5,6 +5,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule, HttpClient } from '@angular/common
 import { ToastrModule } from 'ngx-toastr';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { NgIdleKeepaliveModule } from '@ng-idle/keepalive'; // this includes the core NgIdleModule but includes keepalive providers for easy wireup
+import { MomentModule } from 'angular2-moment'; // optional, provides moment-style pipes for date formatting
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -65,6 +67,9 @@ export const createTranslateLoader = (http: HttpClient) => {
         ToastrModule.forRoot({
             closeButton: true
         }),
+
+        MomentModule,
+        NgIdleKeepaliveModule.forRoot(),
 
         AppRoutingModule,
         CoreModule.forRoot(),

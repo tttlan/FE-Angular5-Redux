@@ -50,6 +50,10 @@
             'ngx-toastr': 'npm:ngx-toastr/ngx-toastr.umd.js',
             '@ngx-translate/core': 'npm:@ngx-translate/core/ngx-translate-core.umd.js',
             '@ngx-translate/http-loader': 'npm:@ngx-translate/http-loader/ngx-translate-http-loader.umd.js',
+            '@ng-idle/keepalive': 'npm:@ng-idle/keepalive/keepalive.umd.js',
+            '@ng-idle/core': 'npm:@ng-idle/core/core.umd.js',
+            'angular2-moment': 'npm:angular2-moment',
+            'moment': 'npm:moment',
             'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api/bundles/in-memory-web-api.umd.js',
             'tslib': 'npm:tslib.js',
             'lodash': 'npm:lodash.js',
@@ -83,6 +87,14 @@
                 defaultExtension: 'js'
             },
             'ngrx-store-freeze': {
+                main: './index.js',
+                defaultExtension: 'js'
+            },
+            'moment': {
+                main: './moment.js',
+                defaultExtension: 'js'
+            },
+            'angular2-moment': {
                 main: './index.js',
                 defaultExtension: 'js'
             }

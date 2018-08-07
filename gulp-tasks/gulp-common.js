@@ -258,6 +258,22 @@ module.exports = () => {
             return gulp.src(conf.configs.ngxTranslateHttpLoader)
                 .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + '@ngx-translate/http-loader/'));
         },
+        copyNgIdleKeepAliveTask: () => {
+            return gulp.src(conf.configs.ngIdleKeepalive)
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + '@ng-idle/keepalive'));
+        },
+        copyNgIdleCoreTask: () => {
+            return gulp.src(conf.configs.ngIdleCore)
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + '@ng-idle/core'));
+        },
+        copyAngular2MomentTask: () => {
+            return gulp.src(conf.configs.angular2Moment)
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + 'angular2-moment/'));
+        },
+        copyMomentTask: () => {
+            return gulp.src(conf.configs.moment)
+                .pipe(gulp.dest(conf.paths.build + conf.paths.buildLibsFolder + 'moment/'));
+        },
         bundleJsTask: () => {
             return gulp.src(conf.bundleJs)
                 // .pipe(eslint({
@@ -293,6 +309,10 @@ module.exports = () => {
                     'copy-ngx-toastr',
                     'copy-ngx-transtate-core',
                     'copy-ngx-transtate-http-loader',
+                    'copy-ngidle-keepalive',
+                    'copy-ngidle-core',
+                    'copy-angular2-moment',
+                    'copy-moment',
                     'copy-ngrx-store-freeze',
                     'copy-hammerjs',
                     'copy-corejs',
