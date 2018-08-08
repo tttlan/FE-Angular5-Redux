@@ -26,20 +26,20 @@ export class AdminComponent implements OnInit {
                 private modalService: ModalService) {
                     
          // sets an idle timeout of 5 seconds, for testing purposes.
-        idle.setIdle(300);
+        idle.setIdle(5);
         // sets a timeout period of 5 seconds. after 10 seconds of inactivity, the user will be considered timed out.
-        idle.setTimeout(15);
+        idle.setTimeout(10);
         // sets the default interrupts, in this case, things like clicks, scrolls, touches to the document
         idle.setInterrupts(DEFAULT_INTERRUPTSOURCES);
         idle.onIdleEnd.subscribe(() => {
-            this.modalService.close('custom-modal-1');
+            this.modalService.close();
         });
         idle.onTimeout.subscribe(() => {
             this.store.dispatch(new fromAuthActions.SignOutAction());
         });
         idle.onTimeoutWarning.subscribe(
             (countdown) => {
-                this.modalService.open('custom-modal-1');
+                this.modalService.open();
                 this.bodyText = 'You will time out in ' + countdown + ' seconds!';
             }
         );
