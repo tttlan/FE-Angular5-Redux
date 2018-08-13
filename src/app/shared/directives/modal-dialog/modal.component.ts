@@ -22,8 +22,8 @@ export class ModalComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
+        document.getElementById('modal-backdrop').style.display = "none";
         this.openModalSub = this.modalService.openEmitEvent.subscribe(() => {
-            document.getElementById('modal-backdrop').style.display = "none";
             this.open();
         });
         this.closeModalSub = this.modalService.closeEmitEvent.subscribe(() => {
