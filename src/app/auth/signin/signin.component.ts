@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
 
 import { Auth, initialAuth, AuthStore } from '../../models/AuthModel';
 import RS from '../../shared/resources/ResourceManager';
@@ -19,14 +20,17 @@ export class SigninComponent implements OnInit {
     error$: Observable<any>;
     loading$: Observable<boolean>;
 
-    constructor(private store: Store<AuthStore>) { }
+    constructor(private store: Store<AuthStore>,
+                private router: Router) { }
 
     ngOnInit() {
         this.resource = RS;
         this.auth = initialAuth;
         this.loading$ = this.store.select(fromAuthReducers.getSignInLoading);
-        // reset login status
-        this.store.dispatch(new fromAuthActions.SignOutAction());
+
+        if (localStorage.getItem('currentUser')) { 
+            this.router.navigate(['/']);
+        }
     }
 
     onSubmit($event: Auth) {
